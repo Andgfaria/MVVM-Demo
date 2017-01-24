@@ -7,6 +7,7 @@
 //
 
 import Alamofire
+import ObjectMapper
 import RxAlamofire
 import RxSwift
 
@@ -23,10 +24,16 @@ struct UnsplashConnection {
         headers = ["Authorization" : "Client-ID \(apiKey)", "Accepted-Version" : "v1"]
     }
     
-    func photos() -> Observable<String> {
+    func photos() -> Observable<[UnsplashPhoto]> {
         return RxAlamofire.requestJSON(.get, "https://api.unsplash.com/photos", parameters: nil, encoding: JSONEncoding.default, headers: headers)
-            .map { response, json -> String in
-                "Teste"
+               .map { response, json -> [UnsplashPhoto] in
+                    if let json = json as? [[String : Any]] {
+                        let mapper = Mapper<UnsplashPhoto>()
+                        let photosList = json.map { mapper.map(JSON: $0) }
+                        let unwrappedPhotos = photosList.filter { $0 != nil }.map { $0! }
+                    return unwrappedPhotos
+                }
+                return []
             }
     }
     
