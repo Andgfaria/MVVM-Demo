@@ -26,7 +26,9 @@ class PhotosListViewController: UIViewController, UITableViewDelegate {
         tableView.register(FullSizePhotoTableViewCell.self, forCellReuseIdentifier: photoCellReuseIdentifier)
         viewModel.photos.asObservable().observeOn(MainScheduler.instance).bindTo(tableView.rx.items(cellIdentifier: photoCellReuseIdentifier, cellType: FullSizePhotoTableViewCell.self)) { (row, element, cell) in
             if let url = URL(string: element.regularSizeURL) {
-                cell.imageView?.kf.setImage(with: url)
+                cell.imageView?.kf.setImage(with: url, completionHandler: { _,_,_,_ in
+                    cell.activityIndicator.stopAnimating()
+                })
                 cell.imageView?.contentMode = .scaleAspectFit
             }
         }.addDisposableTo(disposeBag)
