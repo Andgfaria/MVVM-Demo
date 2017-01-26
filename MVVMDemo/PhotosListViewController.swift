@@ -15,19 +15,19 @@ class PhotosListViewController: UIViewController, UITableViewDelegate {
     
     private let disposeBag = DisposeBag()
     
-    @IBOutlet weak private var tableView: UITableView!
-    
     private let photoCellReuseIdentifier = NSStringFromClass(FullSizePhotoTableViewCell.self)
+
+    @IBOutlet weak private var tableView: UITableView!
     
     private let viewModel = PhotosListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(FullSizePhotoTableViewCell.self, forCellReuseIdentifier: photoCellReuseIdentifier)
-        viewModel.photos.asObservable().bindTo(tableView.rx.items(cellIdentifier: photoCellReuseIdentifier, cellType: FullSizePhotoTableViewCell.self)) { (row, element, cell) in
+        viewModel.photos.asObservable().observeOn(MainScheduler.instance).bindTo(tableView.rx.items(cellIdentifier: photoCellReuseIdentifier, cellType: FullSizePhotoTableViewCell.self)) { (row, element, cell) in
             if let url = URL(string: element.regularSizeURL) {
                 cell.imageView?.kf.setImage(with: url)
-                cell.imageView?.contentMode = .scaleAspectFill
+                cell.imageView?.contentMode = .scaleAspectFit
             }
         }.addDisposableTo(disposeBag)
     }

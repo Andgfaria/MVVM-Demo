@@ -24,7 +24,7 @@ struct PhotosListViewModel {
     
     func heightForPhoto(atIndex index : Int, withWidth width: Double) -> Double {
         let photo = photos.value[index]
-        return (photo.height * width) / photo.height
+        return (photo.height * width) / photo.width
     }
 
     func fetchPhotos() {

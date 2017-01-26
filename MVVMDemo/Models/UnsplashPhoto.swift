@@ -20,6 +20,8 @@ struct UnsplashPhoto : Mappable {
     
     var regularSizeURL = ""
     
+    var smallSizeURL = ""
+    
     var width = 0.0
     
     init?(map: Map) {
@@ -32,6 +34,7 @@ struct UnsplashPhoto : Mappable {
         height <- map["height"]
         fullSizeURL <- map["urls.full"]
         regularSizeURL <- map["urls.regular"]
+        smallSizeURL <- map["urls.small"]
         width <- map["width"]
     }
     
