@@ -7,23 +7,32 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 struct PhotosListViewModel {
     
+    private let disposeBag = DisposeBag()
+    
     private let reuseIdentifier = "photoCell"
     
-    func numberOfPhotos() -> Int {
-        return 1
+    var photos = Variable<[UnsplashPhoto]>([])
+    
+    init() {
+        fetchPhotos()
     }
     
-    func idealPhotoHeight(forWidth width: CGFloat) -> CGFloat {
-        let size = CGSize(width: 800, height: 600)
-        return (size.height * width) / size.width
+    func heightForPhoto(atIndex index : Int, withWidth width: Double) -> Double {
+        let photo = photos.value[index]
+        return (photo.height * width) / photo.height
     }
-    
-    func setupPhotoCell(_ photoCell : FullSizePhotoTableViewCell) {
-        photoCell.imageView?.backgroundColor = .gray
-        photoCell.imageView?.contentMode = .scaleAspectFit
+
+    func fetchPhotos() {
+        UnsplashConnection.shared.photos().subscribe(onNext: { fetchedPhotos in
+            self.photos.value.append(contentsOf: fetchedPhotos)
+        }, onError: { error in
+            
+        }).addDisposableTo(disposeBag)
     }
     
 }

@@ -30,8 +30,8 @@ struct UnsplashPhoto : Mappable {
         created_at <- map["created_at"]
         id <- map["id"]
         height <- map["height"]
-        fullSizeURL <- map["urls"]["full"]
-        regularSizeURL <- map["urls"]["regular"]
+        fullSizeURL <- map["urls.full"]
+        regularSizeURL <- map["urls.regular"]
         width <- map["width"]
     }
     

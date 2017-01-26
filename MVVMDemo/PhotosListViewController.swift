@@ -8,8 +8,12 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
+import Kingfisher
 
-class PhotosListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class PhotosListViewController: UIViewController, UITableViewDelegate {
+    
+    private let disposeBag = DisposeBag()
     
     @IBOutlet weak private var tableView: UITableView!
     
@@ -20,30 +24,21 @@ class PhotosListViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(FullSizePhotoTableViewCell.self, forCellReuseIdentifier: photoCellReuseIdentifier)
+        viewModel.photos.asObservable().bindTo(tableView.rx.items(cellIdentifier: photoCellReuseIdentifier, cellType: FullSizePhotoTableViewCell.self)) { (row, element, cell) in
+            if let url = URL(string: element.regularSizeURL) {
+                cell.imageView?.kf.setImage(with: url)
+                cell.imageView?.contentMode = .scaleAspectFill
+            }
+        }.addDisposableTo(disposeBag)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfPhotos()
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return viewModel.idealPhotoHeight(forWidth: tableView.bounds.size.width)
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: photoCellReuseIdentifier, for: indexPath)
-        if let cell = cell as? FullSizePhotoTableViewCell {
-            viewModel.setupPhotoCell(cell)
-        }
-        return cell
-    }
-
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        self.tableView.reloadData()
+        let tableViewWidth = Double(tableView.bounds.width)
+        return CGFloat(viewModel.heightForPhoto(atIndex: indexPath.row, withWidth:tableViewWidth))
     }
     
 }
