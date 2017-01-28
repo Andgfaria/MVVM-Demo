@@ -14,7 +14,7 @@ struct PhotosListViewModel {
     
     private let disposeBag = DisposeBag()
     
-    private let reuseIdentifier = "photoCell"
+    var isInitialLoading = Variable(true)
     
     var photos = Variable<[UnsplashPhoto]>([])
     
@@ -33,9 +33,10 @@ struct PhotosListViewModel {
 
     private func fetchPhotos() {
         UnsplashConnection.shared.photos().subscribe(onNext: { fetchedPhotos in
+            self.isInitialLoading.value = false
             self.photos.value.append(contentsOf: fetchedPhotos)
         }, onError: { error in
-            
+            self.isInitialLoading.value = false
         }).addDisposableTo(disposeBag)
     }
     

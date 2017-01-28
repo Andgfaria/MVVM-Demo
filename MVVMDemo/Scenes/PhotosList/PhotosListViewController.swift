@@ -12,6 +12,8 @@ import RxCocoa
 import Kingfisher
 
 class PhotosListViewController: UIViewController, UITableViewDelegate {
+    
+    @IBOutlet weak private var centerActivityIndicator: UIActivityIndicatorView!
 
     private let disposeBag = DisposeBag()
     
@@ -28,17 +30,25 @@ class PhotosListViewController: UIViewController, UITableViewDelegate {
     }
 
     private func setupBinding() {
+        setupInitialLoadingBinding()
+        setupTableViewBinding()
+    }
+    
+    private func setupInitialLoadingBinding() {
+        viewModel.isInitialLoading.asObservable().map{!$0}.bindTo(centerActivityIndicator.rx.isHidden).addDisposableTo(disposeBag)
+        viewModel.isInitialLoading.asObservable().bindTo(tableView.rx.isHidden).addDisposableTo(disposeBag)
+    }
+    
+    private func setupTableViewBinding() {
         viewModel.photos
-                 .asObservable()
-                 .subscribeOn(MainScheduler.instance)
-                 .bindTo(tableView.rx.items(cellIdentifier: reuseIdentifier, cellType: FullSizePhotoTableViewCell.self))
-                 { _, element, cell in
-                    cell.imageView?.kf.indicatorType = .activity
-                    if let url = self.viewModel.previewPhotoUrlFor(element) {
-                        cell.imageView?.kf.setImage(with: url, placeholder: UIImage())
-                    }
-                 }
-                 .addDisposableTo(disposeBag)
+            .asObservable()
+            .bindTo(tableView.rx.items(cellIdentifier: reuseIdentifier, cellType: FullSizePhotoTableViewCell.self))
+            { _, element, cell in
+                if let url = self.viewModel.previewPhotoUrlFor(element) {
+                    cell.imageView?.kf.setImage(with: url, placeholder: UIImage())
+                }
+            }
+            .addDisposableTo(disposeBag)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
