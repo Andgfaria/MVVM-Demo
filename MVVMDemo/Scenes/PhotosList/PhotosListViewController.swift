@@ -40,8 +40,14 @@ class PhotosListViewController: UIViewController, UITableViewDelegate {
     }
     
     private func setupInitialLoadingBinding() {
-        viewModel.isInitialLoading.asObservable().map{!$0}.bindTo(centerActivityIndicator.rx.isHidden).addDisposableTo(disposeBag)
-        viewModel.isInitialLoading.asObservable().bindTo(tableView.rx.isHidden).addDisposableTo(disposeBag)
+        viewModel.currentState.asObservable()
+                              .map{ $0 != .initialLoading }
+                              .bindTo(centerActivityIndicator.rx.isHidden)
+                              .addDisposableTo(disposeBag)
+        viewModel.currentState.asObservable()
+                              .map { $0 == .initialLoading || $0 == .initialLoadingFailure }
+                              .bindTo(tableView.rx.isHidden)
+                              .addDisposableTo(disposeBag)
     }
     
     private func setupTableViewBinding() {
@@ -57,9 +63,18 @@ class PhotosListViewController: UIViewController, UITableViewDelegate {
     }
     
     private func setupFooterBinding() {
-        viewModel.isLoadingNextPage.asObservable().map{!$0}.bindTo(footerActivityIndicator.rx.isHidden).addDisposableTo(disposeBag)
-        viewModel.isLoadingNextPage.asObservable().bindTo(loadMoreButton.rx.isHidden).addDisposableTo(disposeBag)
-        loadMoreButton.rx.tap.asObservable().map { true }.bindTo(viewModel.isLoadingNextPage).addDisposableTo(disposeBag)
+        viewModel.currentState.asObservable()
+                              .map{ $0 != .loadingNextPage }
+                              .bindTo(footerActivityIndicator.rx.isHidden)
+                              .addDisposableTo(disposeBag)
+        viewModel.currentState.asObservable()
+                              .map { $0 != .normal }
+                              .bindTo(loadMoreButton.rx.isHidden)
+                              .addDisposableTo(disposeBag)
+        loadMoreButton.rx.tap.asObservable()
+                              .map { PhotosListState.loadingNextPage }
+                              .bindTo(viewModel.currentState)
+                              .addDisposableTo(disposeBag)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -10,15 +10,20 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+enum PhotosListState {
+    case initialLoading,
+         initialLoadingFailure,
+         normal,
+         loadingNextPage
+}
+
 struct PhotosListViewModel {
     
     private var currentPage = Variable(0)
     
+    var currentState = Variable(PhotosListState.initialLoading)
+    
     private let disposeBag = DisposeBag()
-    
-    var isInitialLoading = Variable(true)
-    
-    var isLoadingNextPage = Variable(true)
     
     var photos = Variable<[UnsplashPhoto]>([])
     
@@ -27,12 +32,15 @@ struct PhotosListViewModel {
     }
     
     private func setupPageBinding() {
-        isLoadingNextPage.asObservable().subscribe(onNext: { loading in
-            if loading {
+        currentState.asObservable().subscribe(onNext: { currentState in
+            if currentState == .initialLoading || currentState == .loadingNextPage {
                 self.fetchNextPageOfPhotos()
             }
         }).addDisposableTo(disposeBag)
-        photos.asObservable().map { $0.count > 0 ? self.currentPage.value + 1 : self.currentPage.value }.bindTo(currentPage).addDisposableTo(disposeBag)
+        photos.asObservable()
+              .map { $0.count > 0 ? self.currentPage.value + 1 : self.currentPage.value }
+              .bindTo(currentPage)
+              .addDisposableTo(disposeBag)
     }
     
     func heightForPhoto(atIndex index : Int, withWidth width: Double) -> Double {
@@ -45,19 +53,19 @@ struct PhotosListViewModel {
     }
 
     private func fetchNextPageOfPhotos() {
-        UnsplashConnection.shared.photos(ofPage: currentPage.value + 1).subscribe(onNext: { fetchedPhotos in
-            self.finishedLoading()
+        UnsplashConnection.shared.photos(ofPage: currentPage.value + 1)
+        .subscribe(onNext: { fetchedPhotos in
             if fetchedPhotos.count > 0 {
                 self.photos.value.append(contentsOf: fetchedPhotos)
+                self.currentState.value = .normal
+            }
+            else {
+                self.currentState.value = self.currentState.value == .initialLoading ? .initialLoadingFailure : .normal
             }
         }, onError: { error in
-            self.finishedLoading()
-        }).addDisposableTo(disposeBag)
-    }
-    
-    private func finishedLoading() {
-        self.isInitialLoading.value = false
-        self.isLoadingNextPage.value = false
+            self.currentState.value = self.currentState.value == .initialLoading ? .initialLoadingFailure : .normal
+        })
+        .addDisposableTo(disposeBag)
     }
     
 }
