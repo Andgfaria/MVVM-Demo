@@ -12,25 +12,27 @@ import RxCocoa
 
 struct PhotosListViewModel {
     
-    var currentPage = Variable(1)
+    private var currentPage = Variable(0)
     
     private let disposeBag = DisposeBag()
     
     var isInitialLoading = Variable(true)
     
-    var isLoadingNextPage = Variable(false)
+    var isLoadingNextPage = Variable(true)
     
     var photos = Variable<[UnsplashPhoto]>([])
     
     init() {
-        fetchPhotos()
         setupPageBinding()
     }
     
     private func setupPageBinding() {
-        currentPage.asObservable().subscribe(onNext: { _ in
-            self.isLoadingNextPage.value = true
+        isLoadingNextPage.asObservable().subscribe(onNext: { loading in
+            if loading {
+                self.fetchNextPageOfPhotos()
+            }
         }).addDisposableTo(disposeBag)
+        photos.asObservable().map { $0.count > 0 ? self.currentPage.value + 1 : self.currentPage.value }.bindTo(currentPage).addDisposableTo(disposeBag)
     }
     
     func heightForPhoto(atIndex index : Int, withWidth width: Double) -> Double {
@@ -42,15 +44,20 @@ struct PhotosListViewModel {
         return URL(string: photo.regularSizeURL)
     }
 
-    private func fetchPhotos() {
-        UnsplashConnection.shared.photos().subscribe(onNext: { fetchedPhotos in
-            self.isInitialLoading.value = false
-            self.isLoadingNextPage.value = false
-            self.photos.value.append(contentsOf: fetchedPhotos)
+    private func fetchNextPageOfPhotos() {
+        UnsplashConnection.shared.photos(ofPage: currentPage.value + 1).subscribe(onNext: { fetchedPhotos in
+            self.finishedLoading()
+            if fetchedPhotos.count > 0 {
+                self.photos.value.append(contentsOf: fetchedPhotos)
+            }
         }, onError: { error in
-            self.isInitialLoading.value = false
-            self.isLoadingNextPage.value = false
+            self.finishedLoading()
         }).addDisposableTo(disposeBag)
+    }
+    
+    private func finishedLoading() {
+        self.isInitialLoading.value = false
+        self.isLoadingNextPage.value = false
     }
     
 }

@@ -59,11 +59,12 @@ class PhotosListViewController: UIViewController, UITableViewDelegate {
     private func setupFooterBinding() {
         viewModel.isLoadingNextPage.asObservable().map{!$0}.bindTo(footerActivityIndicator.rx.isHidden).addDisposableTo(disposeBag)
         viewModel.isLoadingNextPage.asObservable().bindTo(loadMoreButton.rx.isHidden).addDisposableTo(disposeBag)
-        loadMoreButton.rx.tap.asObservable().map { self.viewModel.currentPage.value + 1 }.bindTo(viewModel.currentPage).addDisposableTo(disposeBag)
+        loadMoreButton.rx.tap.asObservable().map { true }.bindTo(viewModel.isLoadingNextPage).addDisposableTo(disposeBag)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let tableViewWidth = Double(tableView.bounds.size.width)
         return CGFloat(viewModel.heightForPhoto(atIndex: indexPath.row, withWidth: tableViewWidth))
     }
+    
 }

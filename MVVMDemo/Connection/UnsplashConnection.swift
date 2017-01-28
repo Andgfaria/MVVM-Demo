@@ -24,8 +24,9 @@ struct UnsplashConnection {
         headers = ["Authorization" : "Client-ID \(apiKey)", "Accepted-Version" : "v1"]
     }
     
-    func photos() -> Observable<[UnsplashPhoto]> {
-        return RxAlamofire.requestJSON(.get, "https://api.unsplash.com/photos", parameters: nil, encoding: JSONEncoding.default, headers: headers)
+    func photos(ofPage page : Int) -> Observable<[UnsplashPhoto]> {
+        let parameters = ["page" : page, "per_page" : 15]
+        return RxAlamofire.requestJSON(.get, "https://api.unsplash.com/photos", parameters: parameters, headers: headers)
                .map { response, json -> [UnsplashPhoto] in
                     if let json = json as? [[String : Any]] {
                         let mapper = Mapper<UnsplashPhoto>()
