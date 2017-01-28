@@ -17,6 +17,10 @@ class PhotosListViewController: UIViewController, UITableViewDelegate {
 
     private let disposeBag = DisposeBag()
     
+    @IBOutlet weak private var footerActivityIndicator: UIActivityIndicatorView!
+    
+    @IBOutlet weak private var loadMoreButton: CustomRoundedButton!
+    
     @IBOutlet weak private var tableView: UITableView!
     
     private let reuseIdentifier = NSStringFromClass(FullSizePhotoTableViewCell.self)
@@ -32,6 +36,7 @@ class PhotosListViewController: UIViewController, UITableViewDelegate {
     private func setupBinding() {
         setupInitialLoadingBinding()
         setupTableViewBinding()
+        setupFooterBinding()
     }
     
     private func setupInitialLoadingBinding() {
@@ -49,6 +54,12 @@ class PhotosListViewController: UIViewController, UITableViewDelegate {
                 }
             }
             .addDisposableTo(disposeBag)
+    }
+    
+    private func setupFooterBinding() {
+        viewModel.isLoadingNextPage.asObservable().map{!$0}.bindTo(footerActivityIndicator.rx.isHidden).addDisposableTo(disposeBag)
+        viewModel.isLoadingNextPage.asObservable().bindTo(loadMoreButton.rx.isHidden).addDisposableTo(disposeBag)
+        loadMoreButton.rx.tap.asObservable().map { self.viewModel.currentPage.value + 1 }.bindTo(viewModel.currentPage).addDisposableTo(disposeBag)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

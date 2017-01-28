@@ -40,6 +40,42 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hbb-Tf-zvd">
                                 <rect key="frame" x="0.0" y="-0.5" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="5gQ-4B-ewU">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gJm-RN-Z96" customClass="CustomRoundedButton" customModule="MVVMDemo" customModuleProvider="target">
+                                            <rect key="frame" x="12" y="4" width="351" height="56"/>
+                                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="56" id="MZY-dN-rIG"/>
+                                            </constraints>
+                                            <state key="normal" title="Load More">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </button>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="DkV-k1-8qp">
+                                            <rect key="frame" x="177" y="21.5" width="20" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="HXu-ZC-udZ"/>
+                                                <constraint firstAttribute="width" constant="20" id="k7U-Zn-P4t"/>
+                                            </constraints>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="DkV-k1-8qp" firstAttribute="centerX" secondItem="5gQ-4B-ewU" secondAttribute="centerX" id="0Nl-CQ-a1w"/>
+                                        <constraint firstAttribute="trailing" secondItem="gJm-RN-Z96" secondAttribute="trailing" constant="12" id="3sc-de-TbC"/>
+                                        <constraint firstItem="gJm-RN-Z96" firstAttribute="centerY" secondItem="5gQ-4B-ewU" secondAttribute="centerY" id="Ibf-sG-4QP"/>
+                                        <constraint firstItem="DkV-k1-8qp" firstAttribute="centerY" secondItem="5gQ-4B-ewU" secondAttribute="centerY" id="ov5-dN-DwT"/>
+                                        <constraint firstItem="gJm-RN-Z96" firstAttribute="leading" secondItem="5gQ-4B-ewU" secondAttribute="leading" constant="12" id="zYA-Kg-k4n"/>
+                                    </constraints>
+                                </view>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="fwJ-fg-bfQ"/>
                                 </connections>
@@ -65,6 +101,8 @@
                     <navigationItem key="navigationItem" title="Photos" id="aX4-OD-Qp5"/>
                     <connections>
                         <outlet property="centerActivityIndicator" destination="4IC-HZ-DHy" id="a14-4h-A4L"/>
+                        <outlet property="footerActivityIndicator" destination="DkV-k1-8qp" id="aXW-ht-L7E"/>
+                        <outlet property="loadMoreButton" destination="gJm-RN-Z96" id="hh3-uN-lWG"/>
                         <outlet property="tableView" destination="hbb-Tf-zvd" id="GrJ-nb-qal"/>
                     </connections>
                 </viewController>

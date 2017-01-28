@@ -12,14 +12,25 @@ import RxCocoa
 
 struct PhotosListViewModel {
     
+    var currentPage = Variable(1)
+    
     private let disposeBag = DisposeBag()
     
     var isInitialLoading = Variable(true)
+    
+    var isLoadingNextPage = Variable(false)
     
     var photos = Variable<[UnsplashPhoto]>([])
     
     init() {
         fetchPhotos()
+        setupPageBinding()
+    }
+    
+    private func setupPageBinding() {
+        currentPage.asObservable().subscribe(onNext: { _ in
+            self.isLoadingNextPage.value = true
+        }).addDisposableTo(disposeBag)
     }
     
     func heightForPhoto(atIndex index : Int, withWidth width: Double) -> Double {
@@ -34,9 +45,11 @@ struct PhotosListViewModel {
     private func fetchPhotos() {
         UnsplashConnection.shared.photos().subscribe(onNext: { fetchedPhotos in
             self.isInitialLoading.value = false
+            self.isLoadingNextPage.value = false
             self.photos.value.append(contentsOf: fetchedPhotos)
         }, onError: { error in
             self.isInitialLoading.value = false
+            self.isLoadingNextPage.value = false
         }).addDisposableTo(disposeBag)
     }
     
