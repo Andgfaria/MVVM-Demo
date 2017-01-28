@@ -26,8 +26,12 @@ struct PhotosListViewModel {
         let photo = photos.value[index]
         return (photo.height * width) / photo.width
     }
+    
+    func previewPhotoUrlFor(_ photo : UnsplashPhoto) -> URL? {
+        return URL(string: photo.regularSizeURL)
+    }
 
-    func fetchPhotos() {
+    private func fetchPhotos() {
         UnsplashConnection.shared.photos().subscribe(onNext: { fetchedPhotos in
             self.photos.value.append(contentsOf: fetchedPhotos)
         }, onError: { error in

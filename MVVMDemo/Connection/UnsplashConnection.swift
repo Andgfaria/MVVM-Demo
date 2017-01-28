@@ -32,8 +32,8 @@ struct UnsplashConnection {
                         let photosList = json.map { mapper.map(JSON: $0) }
                         let unwrappedPhotos = photosList.filter { $0 != nil }.map { $0! }
                     return unwrappedPhotos
-                }
-                return []
+                    }
+                    return []
             }
     }
     

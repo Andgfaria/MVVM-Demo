@@ -13,7 +13,7 @@
         <scene sceneID="246-HI-RwY">
             <objects>
                 <navigationController id="Cx4-9m-wdf" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eEk-gR-ROL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="eEk-gR-ROL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -39,13 +39,13 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hbb-Tf-zvd">
                                 <rect key="frame" x="0.0" y="-0.5" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="fwJ-fg-bfQ"/>
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="hbb-Tf-zvd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="En1-qR-KD8"/>
                             <constraint firstItem="hbb-Tf-zvd" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="U96-Dh-qFp"/>
@@ -55,7 +55,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Photos" id="aX4-OD-Qp5"/>
                     <connections>
-                        <outlet property="tableView" destination="hbb-Tf-zvd" id="kT5-LX-1xh"/>
+                        <outlet property="tableView" destination="hbb-Tf-zvd" id="GrJ-nb-qal"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
