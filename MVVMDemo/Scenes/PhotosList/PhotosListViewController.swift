@@ -54,8 +54,9 @@ class PhotosListViewController: UIViewController, UITableViewDelegate {
         viewModel.photos
             .asObservable()
             .bindTo(tableView.rx.items(cellIdentifier: reuseIdentifier, cellType: FullSizePhotoTableViewCell.self))
-            { _, element, cell in
-                if let url = self.viewModel.previewPhotoUrlFor(element) {
+            { _, photo, cell in
+                cell.imageView?.backgroundColor = UIColor(hex: photo.colorString)
+                if let url = self.viewModel.previewPhotoUrlFor(photo) {
                     cell.imageView?.kf.setImage(with: url, placeholder: UIImage())
                 }
             }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		650297271E3D405400E6ECF0 /* PhotosListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650297261E3D405400E6ECF0 /* PhotosListViewController.swift */; };
 		650297291E3D406F00E6ECF0 /* PhotosListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650297281E3D406F00E6ECF0 /* PhotosListViewModel.swift */; };
+		6554B8671E3E394D007440DA /* Color+HexAndCSSColorNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6554B8661E3E394D007440DA /* Color+HexAndCSSColorNames.swift */; };
 		655753701E3D48EA00980EC2 /* CustomRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557536F1E3D48EA00980EC2 /* CustomRoundedButton.swift */; };
 		6578AE651E377E7100176514 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6578AE641E377E7100176514 /* AppDelegate.swift */; };
 		6578AE6A1E377E7100176514 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6578AE681E377E7100176514 /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 		5F6A4F9562AEB9845DD0FA0A /* Pods-MVVMDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMDemo/Pods-MVVMDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		650297261E3D405400E6ECF0 /* PhotosListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosListViewController.swift; sourceTree = "<group>"; };
 		650297281E3D406F00E6ECF0 /* PhotosListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosListViewModel.swift; sourceTree = "<group>"; };
+		6554B8661E3E394D007440DA /* Color+HexAndCSSColorNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+HexAndCSSColorNames.swift"; sourceTree = "<group>"; };
 		6557536F1E3D48EA00980EC2 /* CustomRoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomRoundedButton.swift; sourceTree = "<group>"; };
 		6578AE611E377E7100176514 /* MVVMDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6578AE641E377E7100176514 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,14 @@
 			path = PhotosList;
 			sourceTree = "<group>";
 		};
+		6554B8651E3E3915007440DA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6554B8661E3E394D007440DA /* Color+HexAndCSSColorNames.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		6578AE581E377E7100176514 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +106,7 @@
 		6578AE631E377E7100176514 /* MVVMDemo */ = {
 			isa = PBXGroup;
 			children = (
+				6554B8651E3E3915007440DA /* Extensions */,
 				650297241E3D400C00E6ECF0 /* Scenes */,
 				65D4C6681E37A638003054C6 /* Connection */,
 				65D4C6691E37A663003054C6 /* Models */,
@@ -274,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6554B8671E3E394D007440DA /* Color+HexAndCSSColorNames.swift in Sources */,
 				65A27CAE1E37D4F100D13741 /* FullSizePhotoTableViewCell.swift in Sources */,
 				650297271E3D405400E6ECF0 /* PhotosListViewController.swift in Sources */,
 				65D4C66B1E37A69C003054C6 /* UnsplashPhoto.swift in Sources */,

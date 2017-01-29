@@ -10,6 +10,8 @@ import ObjectMapper
 
 struct UnsplashPhoto : Mappable {
     
+    var colorString = "#000000"
+    
     var created_at = ""
     
     var id = ""
@@ -29,6 +31,7 @@ struct UnsplashPhoto : Mappable {
     }
     
     mutating func mapping(map: Map) {
+        colorString <- map["color"]
         created_at <- map["created_at"]
         id <- map["id"]
         height <- map["height"]
