@@ -28,7 +28,6 @@ struct UnsplashConnection {
         let parameters = ["page" : page, "per_page" : 15]
         return RxAlamofire.requestJSON(.get, "https://api.unsplash.com/photos", parameters: parameters, headers: headers)
                .map { response, json -> [UnsplashPhoto] in
-                    print(json)
                     if let json = json as? [[String : Any]] {
                         let mapper = Mapper<UnsplashPhoto>()
                         let photosList = json.map { mapper.map(JSON: $0) }
