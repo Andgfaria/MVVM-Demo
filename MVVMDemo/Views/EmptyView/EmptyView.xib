@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EmptyView" customModule="MVVMDemo" customModuleProvider="target">
+            <connections>
+                <outlet property="button" destination="x1f-EO-CdV" id="haY-S5-in5"/>
+                <outlet property="label" destination="4pO-kN-exC" id="tOH-rB-skw"/>
+                <outlet property="view" destination="iN0-l3-epB" id="qTc-VT-Nel"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Photos Here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pO-kN-exC">
+                    <rect key="frame" x="14.5" y="323" width="345" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="3IC-lj-CM1"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x1f-EO-CdV" customClass="CustomRoundedButton" customModule="MVVMDemo" customModuleProvider="target">
+                    <rect key="frame" x="93.5" y="563" width="187.5" height="56"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="2Vc-8v-gzs"/>
+                    </constraints>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Try Again">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="x1f-EO-CdV" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="PDj-GA-vRL"/>
+                <constraint firstItem="x1f-EO-CdV" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Sft-6T-bie"/>
+                <constraint firstItem="4pO-kN-exC" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="YSF-xL-svJ"/>
+                <constraint firstAttribute="bottom" secondItem="x1f-EO-CdV" secondAttribute="bottom" constant="48" id="Ysf-Kr-wvX"/>
+                <constraint firstItem="4pO-kN-exC" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" constant="-30" id="d67-x5-4Ck"/>
+                <constraint firstItem="4pO-kN-exC" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="wLt-Fs-GiL"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

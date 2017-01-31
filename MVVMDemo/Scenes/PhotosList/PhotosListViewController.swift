@@ -17,6 +17,8 @@ class PhotosListViewController: UIViewController, UITableViewDelegate {
 
     private let disposeBag = DisposeBag()
     
+    @IBOutlet weak private var emptyView: EmptyView!
+    
     @IBOutlet weak private var footerActivityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak private var loadMoreButton: CustomRoundedButton!
@@ -36,12 +38,13 @@ class PhotosListViewController: UIViewController, UITableViewDelegate {
     private func setupBinding() {
         setupInitialLoadingBinding()
         setupTableViewBinding()
+        setupEmptyViewBinding()
         setupFooterBinding()
     }
     
     private func setupInitialLoadingBinding() {
         viewModel.currentState.asObservable()
-                              .map{ $0 != .initialLoading }
+                              .map { $0 != .initialLoading }
                               .bindTo(centerActivityIndicator.rx.isHidden)
                               .addDisposableTo(disposeBag)
         viewModel.currentState.asObservable()
@@ -61,6 +64,18 @@ class PhotosListViewController: UIViewController, UITableViewDelegate {
                 }
             }
             .addDisposableTo(disposeBag)
+    }
+    
+    private func setupEmptyViewBinding() {
+        viewModel.currentState.asObservable()
+                              .map { $0 != .initialLoadingFailure }
+                              .bindTo(emptyView.rx.isHidden)
+                              .addDisposableTo(disposeBag)
+        emptyView.button.rx.tap
+                              .asObservable()
+                              .map { PhotosListState.initialLoading }
+                              .bindTo(viewModel.currentState)
+                              .addDisposableTo(disposeBag)
     }
     
     private func setupFooterBinding() {
