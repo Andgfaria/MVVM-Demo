@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppCoordinator {
+class AppCoordinator : PhotosListRoutingDelegate {
     
     var navigationController : UINavigationController?
     
@@ -18,9 +18,18 @@ class AppCoordinator {
     
     func start() {
         if let window = UIApplication.shared.delegate?.window {
+            if let photosListController = navigationController?.viewControllers[0] as? PhotosListViewController {
+                photosListController.routingDelegate = self
+            }
             window?.rootViewController = navigationController
             window?.makeKeyAndVisible()
         }
     }
     
+    func handlePhotoSelection(_ photo: UnsplashPhoto) {
+        if let detailController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: NSStringFromClass(PhotoDetailViewController.self)) as? PhotoDetailViewController {
+            detailController.configure(with: photo)
+            navigationController?.pushViewController(detailController, animated: true)
+        }
+    }
 }

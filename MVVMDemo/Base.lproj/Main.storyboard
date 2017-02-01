@@ -77,5 +77,54 @@
             </objects>
             <point key="canvasLocation" x="38" y="37"/>
         </scene>
+        <!--Photo Detail View Controller-->
+        <scene sceneID="m6U-ou-d7T">
+            <objects>
+                <viewController storyboardIdentifier="MVVMDemo.PhotoDetailViewController" id="hNK-Qf-HEz" customClass="PhotoDetailViewController" customModule="MVVMDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zN1-ct-QNy"/>
+                        <viewControllerLayoutGuide type="bottom" id="eFA-Dh-agR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pM7-gQ-aJD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Esz-Tw-HVn">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="42V-bB-Q02">
+                                        <rect key="frame" x="-0.5" y="0.0" width="375" height="603"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="42V-bB-Q02" firstAttribute="centerX" secondItem="Esz-Tw-HVn" secondAttribute="centerX" id="SUL-QZ-BCt"/>
+                                    <constraint firstAttribute="trailing" secondItem="42V-bB-Q02" secondAttribute="trailing" id="n6N-S1-T3m"/>
+                                    <constraint firstItem="42V-bB-Q02" firstAttribute="top" secondItem="Esz-Tw-HVn" secondAttribute="top" id="rc6-t0-qbi"/>
+                                    <constraint firstAttribute="bottom" secondItem="42V-bB-Q02" secondAttribute="bottom" id="yfV-Rz-ygJ"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="hNK-Qf-HEz" id="BJz-na-AbA"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Esz-Tw-HVn" firstAttribute="width" secondItem="pM7-gQ-aJD" secondAttribute="width" id="00A-N7-TZ2"/>
+                            <constraint firstItem="42V-bB-Q02" firstAttribute="width" secondItem="pM7-gQ-aJD" secondAttribute="width" id="K53-Hd-L4H"/>
+                            <constraint firstItem="Esz-Tw-HVn" firstAttribute="height" secondItem="pM7-gQ-aJD" secondAttribute="height" id="bBl-L7-rMG"/>
+                            <constraint firstItem="Esz-Tw-HVn" firstAttribute="centerX" secondItem="pM7-gQ-aJD" secondAttribute="centerX" id="gY3-AL-Y4O"/>
+                            <constraint firstItem="Esz-Tw-HVn" firstAttribute="centerY" secondItem="pM7-gQ-aJD" secondAttribute="centerY" id="qJz-qD-USG"/>
+                            <constraint firstItem="42V-bB-Q02" firstAttribute="height" secondItem="pM7-gQ-aJD" secondAttribute="height" constant="-64" id="tUg-Oa-E1Q"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="42V-bB-Q02" id="bxi-Q4-Rcx"/>
+                        <outlet property="scrollView" destination="Esz-Tw-HVn" id="ORY-vw-n6f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3PS-2D-eum" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="755" y="34"/>
+        </scene>
     </scenes>
 </document>

@@ -11,6 +11,10 @@ import RxSwift
 import RxCocoa
 import Kingfisher
 
+protocol PhotosListRoutingDelegate : class {
+    func handlePhotoSelection(_ photo : UnsplashPhoto)
+}
+
 class PhotosListViewController: UIViewController, UITableViewDelegate {
     
     private let disposeBag = DisposeBag()
@@ -20,6 +24,8 @@ class PhotosListViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var loadMoreView: LoadMoreView!
     
     @IBOutlet weak private var tableView: UITableView!
+    
+    weak var routingDelegate : PhotosListRoutingDelegate?
     
     private let reuseIdentifier = NSStringFromClass(FullSizePhotoTableViewCell.self)
     
@@ -54,6 +60,11 @@ class PhotosListViewController: UIViewController, UITableViewDelegate {
                  .map { $0 == .initialLoading || $0 == .initialLoadingFailure }
                  .bindTo(tableView.rx.isHidden)
                  .addDisposableTo(disposeBag)
+        tableView.rx.modelSelected(UnsplashPhoto.self)
+                    .subscribe(onNext: {
+                        self.routingDelegate?.handlePhotoSelection($0)
+                    })
+                    .addDisposableTo(disposeBag)
     }
     
     private func setupEmptyViewBinding() {
