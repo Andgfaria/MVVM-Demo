@@ -15,6 +15,8 @@
 		6578AE6A1E377E7100176514 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6578AE681E377E7100176514 /* Main.storyboard */; };
 		6578AE6C1E377E7100176514 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6578AE6B1E377E7100176514 /* Assets.xcassets */; };
 		6578AE6F1E377E7100176514 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6578AE6D1E377E7100176514 /* LaunchScreen.storyboard */; };
+		659AFCA41E415E8800339F29 /* LoadMoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 659AFCA31E415E8800339F29 /* LoadMoreView.xib */; };
+		659AFCA61E41608F00339F29 /* LoadMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659AFCA51E41608F00339F29 /* LoadMoreView.swift */; };
 		65A27CAE1E37D4F100D13741 /* FullSizePhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A27CAD1E37D4F100D13741 /* FullSizePhotoTableViewCell.swift */; };
 		65B11CED1E40041B0081551A /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65B11CEC1E40041B0081551A /* EmptyView.xib */; };
 		65B11CEF1E4005AA0081551A /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B11CEE1E4005AA0081551A /* EmptyView.swift */; };
@@ -36,6 +38,8 @@
 		6578AE6B1E377E7100176514 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6578AE6E1E377E7100176514 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6578AE701E377E7100176514 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		659AFCA31E415E8800339F29 /* LoadMoreView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadMoreView.xib; sourceTree = "<group>"; };
+		659AFCA51E41608F00339F29 /* LoadMoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreView.swift; sourceTree = "<group>"; };
 		65A27CAD1E37D4F100D13741 /* FullSizePhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullSizePhotoTableViewCell.swift; sourceTree = "<group>"; };
 		65B11CEC1E40041B0081551A /* EmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
 		65B11CEE1E4005AA0081551A /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
@@ -124,6 +128,15 @@
 			path = MVVMDemo;
 			sourceTree = "<group>";
 		};
+		659AFCA01E415E1900339F29 /* LoadMoreView */ = {
+			isa = PBXGroup;
+			children = (
+				659AFCA31E415E8800339F29 /* LoadMoreView.xib */,
+				659AFCA51E41608F00339F29 /* LoadMoreView.swift */,
+			);
+			path = LoadMoreView;
+			sourceTree = "<group>";
+		};
 		65A27CAA1E37D2AF00D13741 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +173,7 @@
 		65D4C66C1E37CAFE003054C6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				659AFCA01E415E1900339F29 /* LoadMoreView */,
 				65B11CEB1E4003FC0081551A /* EmptyView */,
 				65A27CAA1E37D2AF00D13741 /* Cells */,
 				6557536F1E3D48EA00980EC2 /* CustomRoundedButton.swift */,
@@ -243,6 +257,7 @@
 				6578AE6F1E377E7100176514 /* LaunchScreen.storyboard in Resources */,
 				6578AE6C1E377E7100176514 /* Assets.xcassets in Resources */,
 				6578AE6A1E377E7100176514 /* Main.storyboard in Resources */,
+				659AFCA41E415E8800339F29 /* LoadMoreView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +319,7 @@
 				6554B8671E3E394D007440DA /* Color+HexAndCSSColorNames.swift in Sources */,
 				65B11CEF1E4005AA0081551A /* EmptyView.swift in Sources */,
 				65A27CAE1E37D4F100D13741 /* FullSizePhotoTableViewCell.swift in Sources */,
+				659AFCA61E41608F00339F29 /* LoadMoreView.swift in Sources */,
 				650297271E3D405400E6ECF0 /* PhotosListViewController.swift in Sources */,
 				65D4C66B1E37A69C003054C6 /* UnsplashPhoto.swift in Sources */,
 				65F0703E1E3D33EF0067A328 /* UnsplashConnection.swift in Sources */,
