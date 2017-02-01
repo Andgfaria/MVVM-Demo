@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EmptyView" customModule="MVVMDemo" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="2Hf-fM-Do7" id="uGW-Mg-YOS"/>
                 <outlet property="button" destination="x1f-EO-CdV" id="haY-S5-in5"/>
                 <outlet property="label" destination="4pO-kN-exC" id="tOH-rB-skw"/>
                 <outlet property="view" destination="iN0-l3-epB" id="qTc-VT-Nel"/>
@@ -47,14 +48,23 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </button>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="2Hf-fM-Do7">
+                    <rect key="frame" x="169" y="315.5" width="37" height="37"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="37" id="Ttn-O2-REW"/>
+                        <constraint firstAttribute="height" constant="37" id="rAw-0w-hF1"/>
+                    </constraints>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="2Hf-fM-Do7" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="CuL-vw-9vu"/>
                 <constraint firstItem="x1f-EO-CdV" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="PDj-GA-vRL"/>
                 <constraint firstItem="x1f-EO-CdV" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Sft-6T-bie"/>
                 <constraint firstItem="4pO-kN-exC" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="YSF-xL-svJ"/>
                 <constraint firstAttribute="bottom" secondItem="x1f-EO-CdV" secondAttribute="bottom" constant="48" id="Ysf-Kr-wvX"/>
                 <constraint firstItem="4pO-kN-exC" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" constant="-30" id="d67-x5-4Ck"/>
+                <constraint firstItem="2Hf-fM-Do7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="hxj-5K-Vnz"/>
                 <constraint firstItem="4pO-kN-exC" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="wLt-Fs-GiL"/>
             </constraints>
         </view>

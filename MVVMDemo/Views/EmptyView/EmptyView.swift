@@ -7,10 +7,22 @@
 //
 
 import UIKit
+import RxSwift
+
+enum EmptyViewState {
+    case loading,
+         noContent
+}
 
 @IBDesignable class EmptyView: UIView {
+    
+    private let disposeBag = DisposeBag()
 
+    var currentState = Variable(EmptyViewState.loading)
+    
     @IBOutlet private var view: UIView!
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var label: UILabel!
     
@@ -20,6 +32,18 @@ import UIKit
         super.init(coder: aDecoder)
         UINib(nibName: "EmptyView", bundle: nil).instantiate(withOwner: self, options: nil)
         addSubview(view)
+        setupStateBinding()
+    }
+    
+    private func setupStateBinding() {
+        currentState.asObservable()
+                    .subscribe(onNext: {
+                        self.activityIndicator.isHidden = false // $0 != .loading
+                        self.label.isHidden = $0 != .noContent
+                        self.button.isHidden = self.label.isHidden
+                    })
+                    .addDisposableTo(disposeBag)
+        
     }
     
     override func layoutSubviews() {

@@ -86,31 +86,21 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="fwJ-fg-bfQ"/>
                                 </connections>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="4IC-HZ-DHy">
-                                <rect key="frame" x="169" y="315" width="37" height="37"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="37" id="a4C-9V-axg"/>
-                                    <constraint firstAttribute="height" constant="37" id="hVL-63-nvZ"/>
-                                </constraints>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="4IC-HZ-DHy" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="CVY-dK-5vT"/>
                             <constraint firstItem="hbb-Tf-zvd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="En1-qR-KD8"/>
                             <constraint firstItem="Nt1-8l-eE9" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Tnr-p8-kcg"/>
                             <constraint firstItem="hbb-Tf-zvd" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="U96-Dh-qFp"/>
                             <constraint firstItem="hbb-Tf-zvd" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="hwg-px-DTK"/>
                             <constraint firstItem="Nt1-8l-eE9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qB2-2l-mzm"/>
                             <constraint firstItem="Nt1-8l-eE9" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="qtd-mM-k6h"/>
-                            <constraint firstItem="4IC-HZ-DHy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rBB-KT-JsG"/>
                             <constraint firstItem="hbb-Tf-zvd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ued-1U-zV5"/>
                             <constraint firstItem="Nt1-8l-eE9" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="zkJ-G7-S64"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Photos" id="aX4-OD-Qp5"/>
                     <connections>
-                        <outlet property="centerActivityIndicator" destination="4IC-HZ-DHy" id="a14-4h-A4L"/>
                         <outlet property="emptyView" destination="Nt1-8l-eE9" id="1Ol-SQ-d6V"/>
                         <outlet property="footerActivityIndicator" destination="DkV-k1-8qp" id="aXW-ht-L7E"/>
                         <outlet property="loadMoreButton" destination="gJm-RN-Z96" id="hh3-uN-lWG"/>

@@ -13,8 +13,6 @@ import Kingfisher
 
 class PhotosListViewController: UIViewController, UITableViewDelegate {
     
-    @IBOutlet weak private var centerActivityIndicator: UIActivityIndicatorView!
-
     private let disposeBag = DisposeBag()
     
     @IBOutlet weak private var emptyView: EmptyView!
@@ -34,23 +32,11 @@ class PhotosListViewController: UIViewController, UITableViewDelegate {
         tableView.register(FullSizePhotoTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         setupBinding()
     }
-
+    
     private func setupBinding() {
-        setupInitialLoadingBinding()
         setupTableViewBinding()
         setupEmptyViewBinding()
         setupFooterBinding()
-    }
-    
-    private func setupInitialLoadingBinding() {
-        viewModel.currentState.asObservable()
-                              .map { $0 != .initialLoading }
-                              .bindTo(centerActivityIndicator.rx.isHidden)
-                              .addDisposableTo(disposeBag)
-        viewModel.currentState.asObservable()
-                              .map { $0 == .initialLoading || $0 == .initialLoadingFailure }
-                              .bindTo(tableView.rx.isHidden)
-                              .addDisposableTo(disposeBag)
     }
     
     private func setupTableViewBinding() {
@@ -64,11 +50,20 @@ class PhotosListViewController: UIViewController, UITableViewDelegate {
                 }
             }
             .addDisposableTo(disposeBag)
+        viewModel.currentState
+                 .asObservable()
+                 .map { $0 == .initialLoading || $0 == .initialLoadingFailure }
+                 .bindTo(tableView.rx.isHidden)
+                 .addDisposableTo(disposeBag)
     }
     
     private func setupEmptyViewBinding() {
         viewModel.currentState.asObservable()
-                              .map { $0 != .initialLoadingFailure }
+                              .map { $0 == .initialLoading ? EmptyViewState.loading : EmptyViewState.noContent }
+                              .bindTo(emptyView.currentState)
+                              .addDisposableTo(disposeBag)
+        viewModel.currentState.asObservable()
+                              .map { !($0 == .initialLoading || $0 == .initialLoadingFailure) }
                               .bindTo(emptyView.rx.isHidden)
                               .addDisposableTo(disposeBag)
         emptyView.button.rx.tap
