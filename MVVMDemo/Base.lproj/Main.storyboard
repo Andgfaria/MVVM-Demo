@@ -106,11 +106,22 @@
                                     <outlet property="delegate" destination="hNK-Qf-HEz" id="BJz-na-AbA"/>
                                 </connections>
                             </scrollView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gMw-eG-yhT">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="JQ1-oE-PkQ" kind="embed" id="rLU-lP-4If"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Esz-Tw-HVn" firstAttribute="width" secondItem="pM7-gQ-aJD" secondAttribute="width" id="00A-N7-TZ2"/>
+                            <constraint firstItem="gMw-eG-yhT" firstAttribute="top" secondItem="zN1-ct-QNy" secondAttribute="bottom" id="3VG-ff-gD3"/>
+                            <constraint firstAttribute="trailing" secondItem="gMw-eG-yhT" secondAttribute="trailing" id="Egg-Ti-rh8"/>
                             <constraint firstItem="42V-bB-Q02" firstAttribute="width" secondItem="pM7-gQ-aJD" secondAttribute="width" id="K53-Hd-L4H"/>
+                            <constraint firstItem="eFA-Dh-agR" firstAttribute="top" secondItem="gMw-eG-yhT" secondAttribute="bottom" id="Qvn-I2-qNi"/>
+                            <constraint firstItem="gMw-eG-yhT" firstAttribute="leading" secondItem="pM7-gQ-aJD" secondAttribute="leading" id="ZpK-qD-YAp"/>
                             <constraint firstItem="Esz-Tw-HVn" firstAttribute="height" secondItem="pM7-gQ-aJD" secondAttribute="height" id="bBl-L7-rMG"/>
                             <constraint firstItem="Esz-Tw-HVn" firstAttribute="centerX" secondItem="pM7-gQ-aJD" secondAttribute="centerX" id="gY3-AL-Y4O"/>
                             <constraint firstItem="Esz-Tw-HVn" firstAttribute="centerY" secondItem="pM7-gQ-aJD" secondAttribute="centerY" id="qJz-qD-USG"/>
@@ -125,6 +136,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3PS-2D-eum" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="755" y="34"/>
+        </scene>
+        <!--Photo Detail Page View Controller-->
+        <scene sceneID="IiC-98-FLA">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" doubleSided="YES" id="JQ1-oE-PkQ" customClass="PhotoDetailPageViewController" customModule="MVVMDemo" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CMb-yA-idp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1628" y="34"/>
         </scene>
     </scenes>
 </document>
