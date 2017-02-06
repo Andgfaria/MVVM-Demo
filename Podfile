@@ -4,6 +4,7 @@ use_frameworks!
 def corepods
 	pod 'Kingfisher'
 	pod 'ObjectMapper'
+	pod 'PureLayout'
 	pod 'RxAlamofire'
 	pod 'RxCocoa'
 	pod 'RxSwift'

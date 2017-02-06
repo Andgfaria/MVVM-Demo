@@ -27,6 +27,7 @@ class PhotoDetailViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         setupScrollView()
         setupImageBinding()
+        setupDetailInfoPages()
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,6 +60,14 @@ class PhotoDetailViewController: UIViewController, UIScrollViewDelegate {
                 }
             })
             .addDisposableTo(disposeBag)
+    }
+    
+    private func setupDetailInfoPages() {
+        if let photo = viewModel?.photo {
+            viewModel?.detailInfoCoordinator = PhotoDetailInfoCoordinator(containerView: aditionalInfoContainerView, photo: photo.value
+            )
+        }
+
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView?

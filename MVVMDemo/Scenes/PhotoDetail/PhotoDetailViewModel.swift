@@ -13,6 +13,8 @@ class PhotoDetailViewModel {
     
     var photo : Variable<UnsplashPhoto>!
     
+    var detailInfoCoordinator : PhotoDetailInfoCoordinator?
+    
     required init(photo : UnsplashPhoto) {
         self.photo = Variable(photo)
     }
