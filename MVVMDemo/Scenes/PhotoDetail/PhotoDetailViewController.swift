@@ -19,6 +19,8 @@ class PhotoDetailViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var aditionalInfoContainerView: UIView!
+    
     var viewModel : PhotoDetailViewModel?
     
     override func viewDidLoad() {

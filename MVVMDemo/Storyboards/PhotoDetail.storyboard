@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Fkz-ud-4Vu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,7 +12,7 @@
         <!--User Info View Controller-->
         <scene sceneID="H71-NR-6IY">
             <objects>
-                <viewController id="Fkz-ud-4Vu" customClass="UserInfoViewController" customModule="MVVMDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MVVMDemo.UserInfoViewController" id="Fkz-ud-4Vu" customClass="UserInfoViewController" customModule="MVVMDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="psK-St-VRf"/>
                         <viewControllerLayoutGuide type="bottom" id="I9T-tB-pyr"/>
@@ -75,6 +75,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yYP-aq-lo6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="114" y="97"/>
+        </scene>
+        <!--Photo Detail Page View Controller-->
+        <scene sceneID="a1M-9f-IBj">
+            <objects>
+                <pageViewController storyboardIdentifier="MVVMDemo.PhotoDetailPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" doubleSided="YES" id="cQX-cq-QIj" customClass="PhotoDetailPageViewController" customModule="MVVMDemo" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RvF-vH-6o0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-833" y="96"/>
         </scene>
     </scenes>
 </document>
