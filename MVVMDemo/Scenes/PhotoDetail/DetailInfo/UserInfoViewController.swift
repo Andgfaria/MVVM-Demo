@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import Kingfisher
+import RxCocoa
+import RxSwift
 
 class UserInfoViewController: UIViewController {
+    
+    private let disposeBag = DisposeBag()
 
     @IBOutlet weak var blurView: UIVisualEffectView!
     
@@ -16,6 +21,7 @@ class UserInfoViewController: UIViewController {
     
     @IBOutlet weak var userNameTextField: UILabel!
     
+    private var viewModel : UserInfoViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,23 +29,34 @@ class UserInfoViewController: UIViewController {
         blurView.layer.masksToBounds = true
         userImageView.layer.cornerRadius = userImageView.bounds.size.width / 2
         userImageView.layer.masksToBounds = true
-        // Do any additional setup after loading the view.
+        setupBindings()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func configureViewModel(with user : UnsplashUser) {
+        if viewModel == nil {
+            viewModel = UserInfoViewModel()
+        }
+        viewModel?.user.value = user
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    private func setupBindings() {
+        viewModel?.user.asObservable()
+                       .map { $0?.name ?? "" }
+                       .bindTo(userNameTextField.rx.text)
+                       .addDisposableTo(disposeBag)
+        viewModel?.user.asObservable()
+                      .subscribe(onNext: {
+                            if let user = $0 {
+                                self.loadProfileImage(of: user)
+                            }
+                            self.userNameTextField.sizeToFit()
+                      })
+                      .addDisposableTo(disposeBag)
     }
-    */
-
+    
+    private func loadProfileImage(of user: UnsplashUser) {
+        if let url = URL(string: user.profilePictureURL) {
+            userImageView.kf.setImage(with: url)
+        }
+    }
 }

@@ -20,13 +20,19 @@ class PhotoDetailInfoCoordinator {
     required init(containerView: UIView, photo: UnsplashPhoto) {
         self.containerView = containerView
         self.photo = photo
-        setupDetailPageWiewController(in: containerView)
+        setupDetailPageViewController(in: containerView,with: photo)
     }
     
-    private func setupDetailPageWiewController(in view : UIView) {
-        let detailPageViewController = photoDetailStoryboard.instantiateViewController(withIdentifier: NSStringFromClass(PhotoDetailPageViewController.self))
-        containerView?.addSubview(detailPageViewController.view)
-        detailPageViewController.view.autoPinEdgesToSuperviewEdges()
+    private func setupDetailPageViewController(in view : UIView, with photo : UnsplashPhoto) {
+        if let detailPageViewController = photoDetailStoryboard.instantiateViewController(withIdentifier: NSStringFromClass(PhotoDetailPageViewController.self)) as? PhotoDetailPageViewController {
+            if let user = photo.user {
+                detailPageViewController.userInfoViewController?.configureViewModel(with: user)
+            }
+            containerView?.addSubview(detailPageViewController.view)
+            detailPageViewController.view.autoPinEdgesToSuperviewEdges()
+        }
+       
     }
+    
     
 }

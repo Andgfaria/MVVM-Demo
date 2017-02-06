@@ -20,7 +20,7 @@ struct UnsplashUser : Mappable {
     
     mutating func mapping(map: Map) {
         name <- map["name"]
-        profilePictureURL <- map["profileImage_medium"]
+        profilePictureURL <- map["profile_image.large"]
     }
     
 }

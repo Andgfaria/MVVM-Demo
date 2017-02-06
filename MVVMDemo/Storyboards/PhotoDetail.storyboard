@@ -22,23 +22,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUG-lw-Jcs">
-                                <rect key="frame" x="68" y="154" width="184" height="172"/>
+                                <rect key="frame" x="68" y="166.5" width="184" height="147"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="pgt-hG-6Gh">
-                                    <rect key="frame" x="0.0" y="0.0" width="184" height="172"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="184" height="147"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7U6-2g-s0n">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7U6-2g-s0n">
                                             <rect key="frame" x="56" y="12" width="72" height="72"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="72" id="05l-TU-cAB"/>
                                                 <constraint firstAttribute="height" constant="72" id="Aw0-kp-sEs"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="André Gimenez Faria" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Z9R-RW-2lC">
-                                            <rect key="frame" x="24" y="96" width="136" height="64"/>
+                                            <rect key="frame" x="24" y="87" width="136" height="48"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="64" id="fA5-A9-hnR"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="fA5-A9-hnR"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -49,7 +48,7 @@
                                         <constraint firstItem="Z9R-RW-2lC" firstAttribute="leading" secondItem="pgt-hG-6Gh" secondAttribute="leading" constant="24" id="9Y5-uX-IJf"/>
                                         <constraint firstItem="7U6-2g-s0n" firstAttribute="centerX" secondItem="pgt-hG-6Gh" secondAttribute="centerX" id="Nd3-0o-aAf"/>
                                         <constraint firstItem="7U6-2g-s0n" firstAttribute="top" secondItem="pgt-hG-6Gh" secondAttribute="top" constant="12" id="cKs-4W-z3T"/>
-                                        <constraint firstItem="Z9R-RW-2lC" firstAttribute="top" secondItem="7U6-2g-s0n" secondAttribute="bottom" constant="12" id="pf2-rN-gzW"/>
+                                        <constraint firstItem="Z9R-RW-2lC" firstAttribute="top" secondItem="7U6-2g-s0n" secondAttribute="bottom" constant="3" id="pf2-rN-gzW"/>
                                         <constraint firstAttribute="trailing" secondItem="Z9R-RW-2lC" secondAttribute="trailing" constant="24" id="qvf-vA-4Gv"/>
                                     </constraints>
                                 </view>

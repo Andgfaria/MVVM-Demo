@@ -29,6 +29,7 @@
 		65D86AB51E489B150094C55D /* PhotoDetailPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D86AB31E489B150094C55D /* PhotoDetailPageViewController.swift */; };
 		65D86AB61E489B150094C55D /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D86AB41E489B150094C55D /* UserInfoViewController.swift */; };
 		65D86AB81E489B3E0094C55D /* PhotoDetailInfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D86AB71E489B3E0094C55D /* PhotoDetailInfoCoordinator.swift */; };
+		65D86ABA1E48A31C0094C55D /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D86AB91E48A31C0094C55D /* UserInfoViewModel.swift */; };
 		65F0703E1E3D33EF0067A328 /* UnsplashConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F0703D1E3D33EF0067A328 /* UnsplashConnection.swift */; };
 		D0276A3DC84C4C6BAE6DC70C /* Pods_MVVMDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C6C19BA3F0D98283F6DBE0F /* Pods_MVVMDemo.framework */; };
 /* End PBXBuildFile section */
@@ -60,6 +61,7 @@
 		65D86AB31E489B150094C55D /* PhotoDetailPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailPageViewController.swift; sourceTree = "<group>"; };
 		65D86AB41E489B150094C55D /* UserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		65D86AB71E489B3E0094C55D /* PhotoDetailInfoCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailInfoCoordinator.swift; sourceTree = "<group>"; };
+		65D86AB91E48A31C0094C55D /* UserInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
 		65F0703D1E3D33EF0067A328 /* UnsplashConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnsplashConnection.swift; sourceTree = "<group>"; };
 		E7F06602012C4B0FBFD4D464 /* Pods-MVVMDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMDemo/Pods-MVVMDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -231,9 +233,10 @@
 		65D86AAE1E489AB80094C55D /* DetailInfo */ = {
 			isa = PBXGroup;
 			children = (
+				65D86AB71E489B3E0094C55D /* PhotoDetailInfoCoordinator.swift */,
 				65D86AB31E489B150094C55D /* PhotoDetailPageViewController.swift */,
 				65D86AB41E489B150094C55D /* UserInfoViewController.swift */,
-				65D86AB71E489B3E0094C55D /* PhotoDetailInfoCoordinator.swift */,
+				65D86AB91E48A31C0094C55D /* UserInfoViewModel.swift */,
 			);
 			path = DetailInfo;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				65D86AB81E489B3E0094C55D /* PhotoDetailInfoCoordinator.swift in Sources */,
 				650188211E4202EF008B5C4E /* PhotoDetailViewController.swift in Sources */,
 				65D4C66B1E37A69C003054C6 /* UnsplashPhoto.swift in Sources */,
+				65D86ABA1E48A31C0094C55D /* UserInfoViewModel.swift in Sources */,
 				65F0703E1E3D33EF0067A328 /* UnsplashConnection.swift in Sources */,
 				6564DEA01E4503B10056BA72 /* UnsplashUser.swift in Sources */,
 				6578AE651E377E7100176514 /* AppDelegate.swift in Sources */,

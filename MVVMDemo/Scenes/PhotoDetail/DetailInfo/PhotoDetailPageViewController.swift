@@ -10,12 +10,12 @@ import UIKit
 
 class PhotoDetailPageViewController: UIPageViewController, UIPageViewControllerDataSource {
 
-    let viewController = UIStoryboard(name: "PhotoDetail", bundle: nil).instantiateViewController(withIdentifier: NSStringFromClass(UserInfoViewController.self))
+    let userInfoViewController = UIStoryboard(name: "PhotoDetail", bundle: nil).instantiateViewController(withIdentifier: NSStringFromClass(UserInfoViewController.self)) as? UserInfoViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = self
-        self.setViewControllers([viewController], direction: .forward, animated: false, completion: nil)
+        self.setViewControllers([userInfoViewController!], direction: .forward, animated: false, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
