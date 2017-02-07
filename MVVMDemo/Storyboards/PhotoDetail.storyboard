@@ -99,7 +99,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nwa-Xs-8Uy">
-                                        <rect key="frame" x="-1" y="0.0" width="321" height="416"/>
+                                        <rect key="frame" x="-0.5" y="0.0" width="320" height="416"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -112,14 +112,40 @@
                                     <outlet property="delegate" destination="xfy-fl-Vto" id="Hak-b3-Uco"/>
                                 </connections>
                             </scrollView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kfw-f0-X1v">
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kfw-f0-X1v">
                                 <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </containerView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Rj-xi-dky">
+                                <rect key="frame" x="20" y="438" width="22" height="22"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ZVS-ih-Y0j">
+                                    <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="okx-Qq-NX1">
+                                            <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="22" id="hjo-d8-V6S"/>
+                                                <constraint firstAttribute="height" constant="22" id="jya-od-K8k"/>
+                                            </constraints>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="okx-Qq-NX1" firstAttribute="centerY" secondItem="ZVS-ih-Y0j" secondAttribute="centerY" id="bAB-se-2hN"/>
+                                        <constraint firstItem="okx-Qq-NX1" firstAttribute="centerX" secondItem="ZVS-ih-Y0j" secondAttribute="centerX" id="ja7-Oq-Dvz"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="bk7-RH-cOT"/>
+                                    <constraint firstAttribute="height" constant="22" id="ky8-rl-2Xc"/>
+                                </constraints>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kfw-f0-X1v" firstAttribute="leading" secondItem="DpB-6j-cKs" secondAttribute="leading" id="3wf-ga-ZQs"/>
+                            <constraint firstItem="9Rj-xi-dky" firstAttribute="leading" secondItem="DpB-6j-cKs" secondAttribute="leading" constant="20" id="9X4-Gm-gHw"/>
                             <constraint firstItem="XPM-hH-tOU" firstAttribute="centerY" secondItem="DpB-6j-cKs" secondAttribute="centerY" id="Fg0-Vi-FIb"/>
                             <constraint firstAttribute="trailing" secondItem="kfw-f0-X1v" secondAttribute="trailing" id="Mpr-e5-G9A"/>
                             <constraint firstItem="XPM-hH-tOU" firstAttribute="centerX" secondItem="DpB-6j-cKs" secondAttribute="centerX" id="Ryv-FY-5Hl"/>
@@ -128,12 +154,15 @@
                             <constraint firstItem="nwa-Xs-8Uy" firstAttribute="height" secondItem="DpB-6j-cKs" secondAttribute="height" constant="-64" id="fPz-gf-t1P"/>
                             <constraint firstItem="8BS-Oh-C6c" firstAttribute="top" secondItem="kfw-f0-X1v" secondAttribute="bottom" id="msg-8y-sIh"/>
                             <constraint firstItem="kfw-f0-X1v" firstAttribute="top" secondItem="oIP-1d-Y0s" secondAttribute="bottom" id="rIf-CZ-Qna"/>
+                            <constraint firstItem="8BS-Oh-C6c" firstAttribute="top" secondItem="9Rj-xi-dky" secondAttribute="bottom" constant="20" id="v5Z-Wb-8wG"/>
                             <constraint firstItem="XPM-hH-tOU" firstAttribute="height" secondItem="DpB-6j-cKs" secondAttribute="height" id="xLB-Ho-R1D"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="aditionalInfoContainerView" destination="kfw-f0-X1v" id="J9o-Br-z1J"/>
                         <outlet property="imageView" destination="nwa-Xs-8Uy" id="buT-8J-EVH"/>
+                        <outlet property="infoButton" destination="okx-Qq-NX1" id="pyu-8h-uhI"/>
+                        <outlet property="infoButtonVisualEffectView" destination="9Rj-xi-dky" id="U2h-BF-Wka"/>
                         <outlet property="scrollView" destination="XPM-hH-tOU" id="d6c-ja-jSN"/>
                     </connections>
                 </viewController>

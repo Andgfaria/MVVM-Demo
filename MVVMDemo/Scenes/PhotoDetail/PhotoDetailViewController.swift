@@ -15,19 +15,25 @@ class PhotoDetailViewController: UIViewController, UIScrollViewDelegate {
     
     private let disposeBag = DisposeBag()
     
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak private var scrollView: UIScrollView!
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak private var imageView: UIImageView!
     
-    @IBOutlet weak var aditionalInfoContainerView: UIView!
+    @IBOutlet weak private var aditionalInfoContainerView: UIView!
+    
+    @IBOutlet weak private var infoButtonVisualEffectView: UIVisualEffectView!
+    
+    @IBOutlet weak private var infoButton: UIButton!
     
     var viewModel : PhotoDetailViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupScrollView()
+        setupInfoButton()
         setupImageBinding()
         setupDetailInfoPages()
+        setupInfoButtonBinding()
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,6 +52,11 @@ class PhotoDetailViewController: UIViewController, UIScrollViewDelegate {
     private func setupScrollView() {
         self.scrollView?.minimumZoomScale = 1.0
         self.scrollView?.maximumZoomScale = 3.0
+    }
+    
+    private func setupInfoButton() {
+        infoButtonVisualEffectView.layer.cornerRadius = infoButtonVisualEffectView.bounds.width / 2
+        infoButtonVisualEffectView.layer.masksToBounds = true
     }
     
     private func setupImageBinding() {
@@ -67,11 +78,27 @@ class PhotoDetailViewController: UIViewController, UIScrollViewDelegate {
             viewModel?.detailInfoCoordinator = PhotoDetailInfoCoordinator(containerView: aditionalInfoContainerView, photo: photo.value
             )
         }
-
     }
     
-    func viewForZooming(in scrollView: UIScrollView) -> UIView?
-    {
+    private func setupInfoButtonBinding() {
+        viewModel?.currentState.asObservable()
+                                .subscribe(onNext: {
+                                    self.infoButtonVisualEffectView.effect = UIBlurEffect(style: $0 == .normal ? .dark : .extraLight)
+                                })
+                                .addDisposableTo(disposeBag)
+        viewModel?.currentState.asObservable()
+                               .map { $0 == .normal }
+                               .bindTo(aditionalInfoContainerView.rx.isHidden)
+                               .addDisposableTo(disposeBag)
+        if let viewModel = viewModel {
+            infoButton.rx.tap.asObservable()
+                             .map{ viewModel.currentState.value == .normal ? PhotoDetailState.showingMoreInfo : PhotoDetailState.normal }
+                             .bindTo(viewModel.currentState)
+                             .addDisposableTo(disposeBag)
+        }
+    }
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
 }

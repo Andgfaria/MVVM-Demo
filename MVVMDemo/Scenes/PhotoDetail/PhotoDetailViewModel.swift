@@ -9,7 +9,13 @@
 import Foundation
 import RxSwift
 
+enum PhotoDetailState {
+    case normal, showingMoreInfo
+}
+
 class PhotoDetailViewModel {
+
+    var currentState = Variable(PhotoDetailState.normal)
     
     var photo : Variable<UnsplashPhoto>!
     
