@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -89,6 +90,38 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m4j-M9-OmB">
                                 <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                                <subviews>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FK2-G4-3mq">
+                                        <rect key="frame" x="80" y="130" width="160" height="200"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Lwt-7L-OQd">
+                                            <rect key="frame" x="0.0" y="0.0" width="160" height="200"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kbo-jW-YpE">
+                                                    <rect key="frame" x="0.0" y="0.0" width="160" height="200"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="200" id="G02-Jp-yHk"/>
+                                                    </constraints>
+                                                </tableView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="kbo-jW-YpE" secondAttribute="bottom" id="6Gw-UA-sAc"/>
+                                                <constraint firstItem="kbo-jW-YpE" firstAttribute="centerX" secondItem="Lwt-7L-OQd" secondAttribute="centerX" id="Alo-MX-cOZ"/>
+                                                <constraint firstItem="kbo-jW-YpE" firstAttribute="top" secondItem="Lwt-7L-OQd" secondAttribute="top" id="etb-yq-0hg"/>
+                                                <constraint firstItem="kbo-jW-YpE" firstAttribute="width" secondItem="Lwt-7L-OQd" secondAttribute="width" id="nMM-Oq-Ei3"/>
+                                            </constraints>
+                                        </view>
+                                        <blurEffect style="dark"/>
+                                    </visualEffectView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="FK2-G4-3mq" secondAttribute="trailing" constant="40" id="2cx-pz-2ri"/>
+                                    <constraint firstItem="FK2-G4-3mq" firstAttribute="centerX" secondItem="m4j-M9-OmB" secondAttribute="centerX" id="XNy-9Y-IXi"/>
+                                    <constraint firstItem="FK2-G4-3mq" firstAttribute="width" secondItem="m4j-M9-OmB" secondAttribute="width" multiplier="0.5" id="ZpU-fM-RxN"/>
+                                    <constraint firstAttribute="bottom" secondItem="FK2-G4-3mq" secondAttribute="bottom" constant="166" id="hY8-pM-GYw"/>
+                                    <constraint firstItem="FK2-G4-3mq" firstAttribute="centerY" secondItem="m4j-M9-OmB" secondAttribute="centerY" id="nSo-FE-U1t"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
