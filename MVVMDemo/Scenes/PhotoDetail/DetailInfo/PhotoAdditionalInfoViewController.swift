@@ -24,13 +24,31 @@ class PhotoAdditionalInfoViewController: UIViewController, UITableViewDataSource
         super.viewDidLoad()
         blurView.layer.cornerRadius = 15.0
         blurView.layer.masksToBounds = true
-        tableView.rowHeight = 64
+        tableView.rowHeight = 56
         tableView.tableFooterView = UIView(frame: CGRect.zero)
+        tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        tableView.reloadData()
+
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        return cell
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         tableViewHeightConstraint.constant = tableView.contentSize.height
         if tableViewHeightConstraint.constant > self.view.bounds.size.height {
             blurViewCenterConstraint.isActive = false
@@ -41,20 +59,6 @@ class PhotoAdditionalInfoViewController: UIViewController, UITableViewDataSource
             blurViewCenterConstraint.isActive = true
         }
         self.view.layoutIfNeeded()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        return cell
     }
     
     
