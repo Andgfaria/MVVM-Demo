@@ -8,9 +8,11 @@
 
 import UIKit
 
-class PhotoDetailPageViewController: UIPageViewController, UIPageViewControllerDataSource {
+class PhotoDetailPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 
     let userInfoViewController = UIStoryboard(name: "PhotoDetail", bundle: nil).instantiateViewController(withIdentifier: NSStringFromClass(UserInfoViewController.self)) as? UserInfoViewController
+    
+    let photoInfoViewController = UIStoryboard(name: "PhotoDetail", bundle: nil).instantiateViewController(withIdentifier: "MVVMDemo.PhotoInfoViewController")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +25,19 @@ class PhotoDetailPageViewController: UIPageViewController, UIPageViewControllerD
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        return nil
+        return viewController == photoInfoViewController ? userInfoViewController : nil
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        return nil
+        return viewController == userInfoViewController ? photoInfoViewController : nil
+    }
+    
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        return 2
+    }
+    
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        return pageViewController.viewControllers?[0] is UserInfoViewController ? 0 : 1
     }
 
 }

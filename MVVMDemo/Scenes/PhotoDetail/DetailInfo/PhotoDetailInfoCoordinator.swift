@@ -17,6 +17,8 @@ class PhotoDetailInfoCoordinator {
     
     private let photoDetailStoryboard = UIStoryboard(name: "PhotoDetail", bundle: nil)
     
+    private var detailPageViewController : PhotoDetailPageViewController?
+    
     required init(containerView: UIView, photo: UnsplashPhoto) {
         self.containerView = containerView
         self.photo = photo
@@ -24,14 +26,16 @@ class PhotoDetailInfoCoordinator {
     }
     
     private func setupDetailPageViewController(in view : UIView, with photo : UnsplashPhoto) {
-        if let detailPageViewController = photoDetailStoryboard.instantiateViewController(withIdentifier: NSStringFromClass(PhotoDetailPageViewController.self)) as? PhotoDetailPageViewController {
+        if let pageViewController = photoDetailStoryboard.instantiateViewController(withIdentifier: NSStringFromClass(PhotoDetailPageViewController.self)) as? PhotoDetailPageViewController {
+            detailPageViewController = pageViewController
             if let user = photo.user {
-                detailPageViewController.userInfoViewController?.configureViewModel(with: user)
+                detailPageViewController?.userInfoViewController?.configureViewModel(with: user)
             }
-            containerView?.addSubview(detailPageViewController.view)
-            detailPageViewController.view.autoPinEdgesToSuperviewEdges()
+            if let view = detailPageViewController?.view {
+                containerView?.addSubview(view)
+            }
+            detailPageViewController?.view.autoPinEdgesToSuperviewEdges()
         }
-       
     }
     
     
