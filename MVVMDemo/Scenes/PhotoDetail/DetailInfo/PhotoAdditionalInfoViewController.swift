@@ -14,24 +14,13 @@ class PhotoAdditionalInfoViewController: UIViewController, UITableViewDataSource
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
-    
-    @IBOutlet var blurViewTopConstraint: NSLayoutConstraint!
-    
-    @IBOutlet var blurViewCenterConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         blurView.layer.cornerRadius = 15.0
         blurView.layer.masksToBounds = true
-        tableView.rowHeight = 56
-        tableView.tableFooterView = UIView(frame: CGRect.zero)
         tableView.reloadData()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,26 +29,42 @@ class PhotoAdditionalInfoViewController: UIViewController, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        switch indexPath.row {
+        case 0:
+            cell.textLabel?.text = "Local"
+            cell.detailTextLabel?.text = "Paris, França"
+        case 1:
+            cell.textLabel?.text = "Tamanho"
+            cell.detailTextLabel?.text = "5120 x 2880"
+        case 2:
+            cell.textLabel?.text = "Data"
+            cell.detailTextLabel?.text = "13/05/1994"
+        default:
+            cell.textLabel?.text = ""
+            cell.detailTextLabel?.text = ""
+        }
+        
         return cell
     }
     
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        tableViewHeightConstraint.constant = tableView.contentSize.height
-        if tableViewHeightConstraint.constant > self.view.bounds.size.height {
-            blurViewCenterConstraint.isActive = false
-            blurViewTopConstraint.isActive = true
-        }
-        else {
-            blurViewTopConstraint.isActive = false
-            blurViewCenterConstraint.isActive = true
-        }
-        self.view.layoutIfNeeded()
-    }
+//    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+//        tableView.reloadData()
+//        tableViewHeightConstraint.constant = tableView.contentSize.height
+//        if tableViewHeightConstraint.constant > self.view.bounds.size.height {
+//            blurViewCenterConstraint.isActive = false
+//            blurViewTopConstraint.isActive = true
+//        }
+//        else {
+//            blurViewTopConstraint.isActive = false
+//            blurViewCenterConstraint.isActive = true
+//        }
+//        self.view.layoutIfNeeded()
+//    }
     
     
     /*
