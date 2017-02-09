@@ -12,7 +12,7 @@ struct UnsplashPhoto : Mappable {
     
     var colorString = "#000000"
     
-    var created_at = ""
+    var created_at : Date?
     
     var id = ""
     
@@ -20,13 +20,15 @@ struct UnsplashPhoto : Mappable {
     
     var fullSizeURL = ""
     
+    var city : String?
+    
     var regularSizeURL = ""
     
     var smallSizeURL = ""
     
-    var width = 0.0
-    
     var user : UnsplashUser?
+    
+    var width = 0.0
     
     init?(map: Map) {
         
@@ -34,14 +36,16 @@ struct UnsplashPhoto : Mappable {
     
     mutating func mapping(map: Map) {
         colorString <- map["color"]
-        created_at <- map["created_at"]
+        created_at <- (map["created_at"],ISO8601DateTransform())
         id <- map["id"]
         height <- map["height"]
         fullSizeURL <- map["urls.full"]
+        city <- map["location.city"]
         regularSizeURL <- map["urls.regular"]
         smallSizeURL <- map["urls.small"]
-        width <- map["width"]
         user <- map["user"]
+        width <- map["width"]
     }
+    
     
 }
