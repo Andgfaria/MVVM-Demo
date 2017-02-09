@@ -34,6 +34,7 @@ class PhotoDetailViewController: UIViewController, UIScrollViewDelegate {
         setupImageBinding()
         setupDetailInfoPages()
         setupInfoButtonBinding()
+        setupDismissInfoTapGestureRecognizer()
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,6 +97,15 @@ class PhotoDetailViewController: UIViewController, UIScrollViewDelegate {
                              .bindTo(viewModel.currentState)
                              .addDisposableTo(disposeBag)
         }
+    }
+    
+    private func setupDismissInfoTapGestureRecognizer() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleDismissInfoTap))
+        aditionalInfoContainerView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    func handleDismissInfoTap() {
+        viewModel?.currentState.value = .normal
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
