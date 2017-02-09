@@ -7,42 +7,38 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-class PhotoAdditionalInfoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class PhotoAdditionalInfoViewController: UIViewController {
 
-    @IBOutlet weak var blurView: UIVisualEffectView!
+    private let disposeBag = DisposeBag()
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak private var blurView: UIVisualEffectView!
+    
+    @IBOutlet weak private var tableView: UITableView!
+    
+    private var viewModel : PhotoAdditionalInfoViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         blurView.layer.cornerRadius = 15.0
         blurView.layer.masksToBounds = true
+        setupBinding()
         tableView.reloadData()
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+    func configureViewModel(with photo : UnsplashPhoto) {
+        viewModel = PhotoAdditionalInfoViewModel(photo: photo)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        switch indexPath.row {
-        case 0:
-            cell.textLabel?.text = "Local"
-            cell.detailTextLabel?.text = "Paris, França"
-        case 1:
-            cell.textLabel?.text = "Tamanho"
-            cell.detailTextLabel?.text = "5120 x 2880"
-        case 2:
-            cell.textLabel?.text = "Data"
-            cell.detailTextLabel?.text = "13/05/1994"
-        default:
-            cell.textLabel?.text = ""
-            cell.detailTextLabel?.text = ""
-        }
-        
-        return cell
+    private func setupBinding() {
+        viewModel?.infoTexts.asObservable()
+            .bindTo(tableView.rx.items(cellIdentifier: "cell")) { _, element, cell in
+                cell.textLabel?.text = element.0
+                cell.detailTextLabel?.text = element.1
+            }
+            .addDisposableTo(disposeBag)
     }
     
 }

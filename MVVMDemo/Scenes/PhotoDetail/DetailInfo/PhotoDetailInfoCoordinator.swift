@@ -31,6 +31,7 @@ class PhotoDetailInfoCoordinator {
             if let user = photo.user {
                 detailPageViewController?.userInfoViewController?.configureViewModel(with: user)
             }
+            detailPageViewController?.photoInfoViewController?.configureViewModel(with: photo)
             if let view = detailPageViewController?.view {
                 containerView?.addSubview(view)
             }
