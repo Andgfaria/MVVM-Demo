@@ -38,12 +38,11 @@ enum EmptyViewState {
     private func setupStateBinding() {
         currentState.asObservable()
                     .subscribe(onNext: {
-                        self.activityIndicator.isHidden = false // $0 != .loading
+                        self.activityIndicator.isHidden = $0 != .loading
                         self.label.isHidden = $0 != .noContent
                         self.button.isHidden = self.label.isHidden
                     })
                     .addDisposableTo(disposeBag)
-        
     }
     
     override func layoutSubviews() {
