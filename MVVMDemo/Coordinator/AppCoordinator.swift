@@ -43,7 +43,7 @@ class AppCoordinator : PhotosListRoutingDelegate {
     }
     
     func handlePhotoSelection(_ photo: UnsplashPhoto) {
-        if let detailController = UIStoryboard(name: "PhotoDetail", bundle: nil).instantiateInitialViewController() as? PhotoDetailViewController {
+        if let detailController = R.storyboard.photoDetail.instantiateInitialViewController() {
             detailController.configure(with: photo)
             navigationController?.pushViewController(detailController, animated: true)
         }

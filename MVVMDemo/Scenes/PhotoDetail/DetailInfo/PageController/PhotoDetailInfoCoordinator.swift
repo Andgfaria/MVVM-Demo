@@ -42,7 +42,7 @@ class PhotoDetailInfoCoordinator {
     }
     
     private func setupDetailPageViewController(in view : UIView, with photo : UnsplashPhoto) {
-        if let pageViewController = photoDetailStoryboard.instantiateViewController(withIdentifier: NSStringFromClass(PhotoDetailPageViewController.self)) as? PhotoDetailPageViewController {
+        if let pageViewController = R.storyboard.photoDetail.mVVMDemoPhotoDetailPageViewController() {
             detailPageViewController = pageViewController
             if let user = photo.user {
                 detailPageViewController?.userInfoViewController?.configureViewModel(with: user)

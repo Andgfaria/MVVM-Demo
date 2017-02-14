@@ -50,7 +50,7 @@ class EmptyView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        UINib(nibName: "EmptyView", bundle: nil).instantiate(withOwner: self, options: nil)
+        R.nib.emptyView().instantiate(withOwner: self, options: nil)
         addSubview(view)
         setupStateBinding()
     }

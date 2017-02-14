@@ -5,6 +5,7 @@ def corepods
 	pod 'Kingfisher'
 	pod 'ObjectMapper'
 	pod 'PureLayout'
+	pod 'R.swift'
 	pod 'RxAlamofire'
 	pod 'RxCocoa'
 	pod 'RxSwift'

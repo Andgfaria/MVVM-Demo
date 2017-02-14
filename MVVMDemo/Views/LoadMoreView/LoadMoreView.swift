@@ -48,7 +48,7 @@ class LoadMoreView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        UINib(nibName: "LoadMoreView", bundle: nil).instantiate(withOwner: self, options: nil)
+        R.nib.loadMoreView().instantiate(withOwner: self, options: nil)
         addSubview(view)
         setupBinding()
     }

@@ -21,6 +21,7 @@
 		659AFCA41E415E8800339F29 /* LoadMoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 659AFCA31E415E8800339F29 /* LoadMoreView.xib */; };
 		659AFCA61E41608F00339F29 /* LoadMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659AFCA51E41608F00339F29 /* LoadMoreView.swift */; };
 		65A27CAE1E37D4F100D13741 /* FullSizePhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A27CAD1E37D4F100D13741 /* FullSizePhotoTableViewCell.swift */; };
+		65AEFEB51E532484003A7119 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AEFEB41E532484003A7119 /* R.generated.swift */; };
 		65B11CED1E40041B0081551A /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 65B11CEC1E40041B0081551A /* EmptyView.xib */; };
 		65B11CEF1E4005AA0081551A /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B11CEE1E4005AA0081551A /* EmptyView.swift */; };
 		65BB34351E53174700D9C371 /* PhotosList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65BB34341E53174700D9C371 /* PhotosList.storyboard */; };
@@ -55,6 +56,7 @@
 		659AFCA31E415E8800339F29 /* LoadMoreView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadMoreView.xib; sourceTree = "<group>"; };
 		659AFCA51E41608F00339F29 /* LoadMoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadMoreView.swift; sourceTree = "<group>"; };
 		65A27CAD1E37D4F100D13741 /* FullSizePhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullSizePhotoTableViewCell.swift; sourceTree = "<group>"; };
+		65AEFEB41E532484003A7119 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		65B11CEC1E40041B0081551A /* EmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
 		65B11CEE1E4005AA0081551A /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		65BB34341E53174700D9C371 /* PhotosList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PhotosList.storyboard; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				6578AE6B1E377E7100176514 /* Assets.xcassets */,
 				6578AE6D1E377E7100176514 /* LaunchScreen.storyboard */,
 				6578AE641E377E7100176514 /* AppDelegate.swift */,
+				65AEFEB41E532484003A7119 /* R.generated.swift */,
 				6578AE701E377E7100176514 /* Info.plist */,
 			);
 			path = MVVMDemo;
@@ -279,8 +282,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6578AE731E377E7100176514 /* Build configuration list for PBXNativeTarget "MVVMDemo" */;
 			buildPhases = (
-				83FBCB3AB16853B51EBFE3AF /* [CP] Check Pods Manifest.lock */,
 				6578AE5D1E377E7100176514 /* Sources */,
+				65AEFEB11E5323AA003A7119 /* ShellScript */,
+				83FBCB3AB16853B51EBFE3AF /* [CP] Check Pods Manifest.lock */,
 				6578AE5E1E377E7100176514 /* Frameworks */,
 				6578AE5F1E377E7100176514 /* Resources */,
 				898F786D8D54988B28C5890D /* [CP] Embed Pods Frameworks */,
@@ -347,6 +351,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		65AEFEB11E5323AA003A7119 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" \"$SRCROOT\"";
+		};
 		6DFD640F6502FDC9C2D965B8 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -407,6 +424,7 @@
 				65BB343A1E53176100D9C371 /* PhotoDetailInfoCoordinator.swift in Sources */,
 				659AFCA61E41608F00339F29 /* LoadMoreView.swift in Sources */,
 				650297271E3D405400E6ECF0 /* PhotosListViewController.swift in Sources */,
+				65AEFEB51E532484003A7119 /* R.generated.swift in Sources */,
 				650188211E4202EF008B5C4E /* PhotoDetailViewController.swift in Sources */,
 				65D4C66B1E37A69C003054C6 /* UnsplashPhoto.swift in Sources */,
 				65F0703E1E3D33EF0067A328 /* UnsplashConnection.swift in Sources */,

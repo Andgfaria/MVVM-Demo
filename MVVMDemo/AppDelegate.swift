@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        if let mainNavigationController = UIStoryboard(name: "PhotosList", bundle: nil).instantiateInitialViewController() as? UINavigationController {
+        if let mainNavigationController = R.storyboard.photosList.instantiateInitialViewController() {
             appCoordinator = AppCoordinator(navigationController: mainNavigationController)
             appCoordinator?.start()
         }
