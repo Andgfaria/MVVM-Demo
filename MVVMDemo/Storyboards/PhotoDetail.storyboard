@@ -25,7 +25,7 @@
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUG-lw-Jcs">
                                 <rect key="frame" x="135.33333333333331" y="294.66666666666669" width="143.33333333333331" height="147"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="pgt-hG-6Gh">
-                                    <rect key="frame" x="0.0" y="0.0" width="144" height="147"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="143" height="147"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7U6-2g-s0n">
@@ -94,7 +94,7 @@
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FK2-G4-3mq">
                                         <rect key="frame" x="82.666666666666686" y="296" width="248.66666666666663" height="144"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Lwt-7L-OQd">
-                                            <rect key="frame" x="0.0" y="0.0" width="248" height="144"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="249" height="144"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="48" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kbo-jW-YpE">
@@ -105,7 +105,7 @@
                                                     </constraints>
                                                     <prototypes>
                                                         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" textLabel="NtV-aN-XDb" detailTextLabel="5AH-E4-trP" style="IBUITableViewCellStyleSubtitle" id="bhE-sr-GaJ">
-                                                            <rect key="frame" x="0.0" y="28" width="248" height="48"/>
+                                                            <rect key="frame" x="0.0" y="28" width="249" height="48"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bhE-sr-GaJ" id="UaC-rI-O0u">
                                                                 <rect key="frame" x="0.0" y="0.0" width="248.66666666666663" height="48"/>
@@ -226,9 +226,9 @@
                                     <outlet property="delegate" destination="xfy-fl-Vto" id="Hak-b3-Uco"/>
                                 </connections>
                             </scrollView>
-                            <containerView hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kfw-f0-X1v">
-                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.24513094190140844" colorSpace="calibratedWhite"/>
+                            <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kfw-f0-X1v">
+                                <rect key="frame" x="0.0" y="20" width="414" height="736"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </containerView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Rj-xi-dky">
                                 <rect key="frame" x="20" y="694" width="22" height="22"/>
@@ -265,14 +265,15 @@
                             <constraint firstItem="XPM-hH-tOU" firstAttribute="centerX" secondItem="DpB-6j-cKs" secondAttribute="centerX" id="Ryv-FY-5Hl"/>
                             <constraint firstItem="XPM-hH-tOU" firstAttribute="width" secondItem="DpB-6j-cKs" secondAttribute="width" id="TlX-my-RPC"/>
                             <constraint firstItem="nwa-Xs-8Uy" firstAttribute="width" secondItem="DpB-6j-cKs" secondAttribute="width" id="XPt-kj-qIV"/>
+                            <constraint firstItem="kfw-f0-X1v" firstAttribute="height" secondItem="DpB-6j-cKs" secondAttribute="height" id="czK-ga-2qH"/>
                             <constraint firstItem="nwa-Xs-8Uy" firstAttribute="height" secondItem="DpB-6j-cKs" secondAttribute="height" constant="-64" id="fPz-gf-t1P"/>
-                            <constraint firstItem="8BS-Oh-C6c" firstAttribute="top" secondItem="kfw-f0-X1v" secondAttribute="bottom" id="msg-8y-sIh"/>
                             <constraint firstItem="kfw-f0-X1v" firstAttribute="top" secondItem="oIP-1d-Y0s" secondAttribute="bottom" id="rIf-CZ-Qna"/>
                             <constraint firstItem="8BS-Oh-C6c" firstAttribute="top" secondItem="9Rj-xi-dky" secondAttribute="bottom" constant="20" id="v5Z-Wb-8wG"/>
                             <constraint firstItem="XPM-hH-tOU" firstAttribute="height" secondItem="DpB-6j-cKs" secondAttribute="height" id="xLB-Ho-R1D"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="additionalInfoContainerViewTopConstraint" destination="rIf-CZ-Qna" id="Uhy-1m-nXy"/>
                         <outlet property="aditionalInfoContainerView" destination="kfw-f0-X1v" id="J9o-Br-z1J"/>
                         <outlet property="imageView" destination="nwa-Xs-8Uy" id="buT-8J-EVH"/>
                         <outlet property="infoButton" destination="okx-Qq-NX1" id="pyu-8h-uhI"/>

@@ -21,6 +21,8 @@ class PhotoDetailViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak private var aditionalInfoContainerView: UIView!
     
+    @IBOutlet weak private var additionalInfoContainerViewTopConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak private var infoButtonVisualEffectView: UIVisualEffectView!
     
     @IBOutlet weak private var infoButton: UIButton!
@@ -31,6 +33,7 @@ class PhotoDetailViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         setupScrollView()
         setupInfoButton()
+        setupContainerViewPositioning()
         setupImageBinding()
         setupDetailInfoPages()
         setupInfoButtonBinding()
@@ -58,6 +61,11 @@ class PhotoDetailViewController: UIViewController, UIScrollViewDelegate {
     private func setupInfoButton() {
         infoButtonVisualEffectView.layer.cornerRadius = infoButtonVisualEffectView.bounds.width / 2
         infoButtonVisualEffectView.layer.masksToBounds = true
+    }
+    
+    private func setupContainerViewPositioning() {
+        additionalInfoContainerViewTopConstraint.constant = self.view.bounds.size.height
+        self.view.layoutIfNeeded()
     }
     
     private func setupImageBinding() {
@@ -88,8 +96,10 @@ class PhotoDetailViewController: UIViewController, UIScrollViewDelegate {
                                 })
                                 .addDisposableTo(disposeBag)
         viewModel?.currentState.asObservable()
-                               .map { $0 == .normal }
-                               .bindTo(aditionalInfoContainerView.rx.isHidden)
+                               .skip(1)
+                               .subscribe(onNext: {
+                                    self.animateContainerViewTransition(with: $0)
+                               })
                                .addDisposableTo(disposeBag)
         if let viewModel = viewModel {
             infoButton.rx.tap.asObservable()
@@ -97,6 +107,14 @@ class PhotoDetailViewController: UIViewController, UIScrollViewDelegate {
                              .bindTo(viewModel.currentState)
                              .addDisposableTo(disposeBag)
         }
+    }
+    
+    private func animateContainerViewTransition(with state : PhotoDetailState) {
+        UIView.animate(withDuration: 0.4, delay: 0.0, options: .curveEaseInOut, animations: {
+            self.additionalInfoContainerViewTopConstraint.constant = state == .normal ?
+                self.view.bounds.size.height : 0
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
     
     private func setupDismissInfoTapGestureRecognizer() {
