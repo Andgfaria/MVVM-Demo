@@ -39,5 +39,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UnsplashAppID</key>
+	<string>cc79cd0358f8407f39723a3d8092d9fbbf27035b7b882aa4e2857997be9ff02b</string>
 </dict>
 </plist>

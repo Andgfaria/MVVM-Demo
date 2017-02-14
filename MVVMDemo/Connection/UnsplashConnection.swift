@@ -36,7 +36,7 @@ struct UnsplashConnection {
     private var headers : [String : String] = [:]
     
     private init() {
-        apiKey = ProcessInfo.processInfo.environment["UNSPLASH_API_ID"] ?? ""
+        apiKey = Bundle.main.infoDictionary?["UnsplashAppID"] as? String ?? ""
         headers = ["Authorization" : "Client-ID \(apiKey)", "Accepted-Version" : "v1"]
     }
     
