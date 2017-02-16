@@ -282,9 +282,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6578AE731E377E7100176514 /* Build configuration list for PBXNativeTarget "MVVMDemo" */;
 			buildPhases = (
-				6578AE5D1E377E7100176514 /* Sources */,
-				65AEFEB11E5323AA003A7119 /* ShellScript */,
 				83FBCB3AB16853B51EBFE3AF /* [CP] Check Pods Manifest.lock */,
+				65AEFEB11E5323AA003A7119 /* ShellScript */,
+				6578AE5D1E377E7100176514 /* Sources */,
 				6578AE5E1E377E7100176514 /* Frameworks */,
 				6578AE5F1E377E7100176514 /* Resources */,
 				898F786D8D54988B28C5890D /* [CP] Embed Pods Frameworks */,
