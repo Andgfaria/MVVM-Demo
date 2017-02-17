@@ -47,9 +47,7 @@ struct UnsplashConnection {
                     if let json = json as? [[String : Any]] {
                         let mapper = Mapper<UnsplashPhoto>()
                         let photosList = json.map { mapper.map(JSON: $0) }
-                        let unwrappedPhotos = photosList
-                                             .filter { $0 != nil }
-                                             .map { $0! }
+                        let unwrappedPhotos = photosList.flatMap { $0 }
                         return unwrappedPhotos
                     }
                     return []
