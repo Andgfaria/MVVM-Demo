@@ -307,7 +307,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0820;
-				ORGANIZATIONNAME = "Ginga One";
+				ORGANIZATIONNAME = "André Faria";
 				TargetAttributes = {
 					6578AE601E377E7100176514 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -553,7 +553,7 @@
 				DEVELOPMENT_TEAM = YDNLNKB75L;
 				INFOPLIST_FILE = MVVMDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = gingaone.MVVMDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = andgfaria.MVVMDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -567,7 +567,7 @@
 				DEVELOPMENT_TEAM = YDNLNKB75L;
 				INFOPLIST_FILE = MVVMDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = gingaone.MVVMDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = andgfaria.MVVMDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
