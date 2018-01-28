@@ -69,51 +69,51 @@ class PhotosListViewController: UIViewController, UITableViewDelegate {
     private func setupTableViewBinding() {
         viewModel.photos
             .asObservable()
-            .bindTo(tableView.rx.items(cellIdentifier: reuseIdentifier, cellType: FullSizePhotoTableViewCell.self))
+            .bind(to: tableView.rx.items(cellIdentifier: reuseIdentifier, cellType: FullSizePhotoTableViewCell.self))
             { _, photo, cell in
                 cell.imageView?.backgroundColor = UIColor(hex: photo.colorString)
                 if let url = self.viewModel.previewPhotoUrlFor(photo) {
                     cell.imageView?.kf.setImage(with: url, placeholder: UIImage())
                 }
             }
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         viewModel.currentState
                  .asObservable()
                  .map { $0 == .initialLoading || $0 == .initialLoadingFailure }
-                 .bindTo(tableView.rx.isHidden)
-                 .addDisposableTo(disposeBag)
+                 .bind(to: tableView.rx.isHidden)
+                 .disposed(by: disposeBag)
         tableView.rx.modelSelected(UnsplashPhoto.self)
                     .subscribe(onNext: {
                         self.routingDelegate?.handlePhotoSelection($0)
                     })
-                    .addDisposableTo(disposeBag)
+                 .disposed(by: disposeBag)
     }
     
     private func setupEmptyViewBinding() {
         viewModel.currentState.asObservable()
                               .map { $0 == .initialLoading ? EmptyViewState.loading : EmptyViewState.noContent }
-                              .bindTo(emptyView.currentState)
-                              .addDisposableTo(disposeBag)
+                              .bind(to: emptyView.currentState)
+                              .disposed(by: disposeBag)
         viewModel.currentState.asObservable()
                               .map { !($0 == .initialLoading || $0 == .initialLoadingFailure) }
-                              .bindTo(emptyView.rx.isHidden)
-                              .addDisposableTo(disposeBag)
+                              .bind(to: emptyView.rx.isHidden)
+                              .disposed(by: disposeBag)
         emptyView.button.rx.tap
                               .asObservable()
                               .map { PhotosListState.initialLoading }
-                              .bindTo(viewModel.currentState)
-                              .addDisposableTo(disposeBag)
+                              .bind(to: viewModel.currentState)
+                              .disposed(by: disposeBag)
     }
     
     private func setupFooterBinding() {
         viewModel.currentState.asObservable()
                               .map{ $0 == .loadingNextPage ? LoadMoreViewState.loading : LoadMoreViewState.normal }
-                              .bindTo(loadMoreView.currentState)
-                              .addDisposableTo(disposeBag)
+            .bind(to: loadMoreView.currentState)
+            .disposed(by: disposeBag)
         loadMoreView.button.rx.tap.asObservable()
                               .map { PhotosListState.loadingNextPage }
-                              .bindTo(viewModel.currentState)
-                              .addDisposableTo(disposeBag)
+            .bind(to: viewModel.currentState)
+            .disposed(by: disposeBag)
     }
     
     //MARK: - Tableview Delegate

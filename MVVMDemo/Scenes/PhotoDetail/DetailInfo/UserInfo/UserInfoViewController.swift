@@ -64,8 +64,8 @@ class UserInfoViewController: UIViewController {
     private func setupBindings() {
         viewModel?.user.asObservable()
                        .map { $0?.name ?? "" }
-                       .bindTo(userNameTextField.rx.text)
-                       .addDisposableTo(disposeBag)
+            .bind(to: userNameTextField.rx.text)
+            .disposed(by: disposeBag)
         viewModel?.user.asObservable()
                       .subscribe(onNext: {
                             if let user = $0 {
@@ -73,7 +73,7 @@ class UserInfoViewController: UIViewController {
                             }
                             self.userNameTextField.sizeToFit()
                       })
-                      .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
     }
     
     private func loadProfileImage(of user: UnsplashUser) {

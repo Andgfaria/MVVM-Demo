@@ -26,8 +26,8 @@ import UIKit
 
 class PhotoDetailPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 
-    let userInfoViewController = R.storyboard.photoDetail.mVVMDemoUserInfoViewController()
-    let photoInfoViewController = R.storyboard.photoDetail.mVVMDemoPhotoInfoViewController()
+    let userInfoViewController = R.storyboard.photoDetail.mvvmDemoUserInfoViewController()
+    let photoInfoViewController = R.storyboard.photoDetail.mvvmDemoPhotoInfoViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()

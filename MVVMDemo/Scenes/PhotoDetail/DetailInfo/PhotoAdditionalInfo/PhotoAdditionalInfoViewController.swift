@@ -54,11 +54,11 @@ class PhotoAdditionalInfoViewController: UIViewController {
     
     private func setupBinding() {
         viewModel?.infoTexts.asObservable()
-            .bindTo(tableView.rx.items(cellIdentifier: "cell")) { _, element, cell in
+            .bind(to: tableView.rx.items(cellIdentifier: "cell")) { _, element, cell in
                 cell.textLabel?.text = element.0
                 cell.detailTextLabel?.text = element.1
             }
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
     }
     
 }

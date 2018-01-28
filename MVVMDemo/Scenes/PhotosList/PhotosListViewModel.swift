@@ -58,11 +58,11 @@ struct PhotosListViewModel {
             if currentState == .initialLoading || currentState == .loadingNextPage {
                 self.fetchNextPageOfPhotos()
             }
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: disposeBag)
         photos.asObservable()
               .map { $0.count > 0 ? self.currentPage.value + 1 : self.currentPage.value }
-              .bindTo(currentPage)
-              .addDisposableTo(disposeBag)
+            .bind(to: currentPage)
+            .disposed(by: disposeBag)
     }
     
     //MARK: - Datasource
@@ -89,7 +89,7 @@ struct PhotosListViewModel {
         }, onError: { error in
             self.currentState.value = self.currentState.value == .initialLoading ? .initialLoadingFailure : .normal
         })
-        .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
     }
     
 }

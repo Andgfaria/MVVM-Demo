@@ -59,7 +59,7 @@ class LoadMoreView: UIView {
                         self.activityIndicator.isHidden = $0 == .normal
                         self.button.isHidden = !self.activityIndicator.isHidden
                     })
-                    .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
     }
     
     override func layoutSubviews() {

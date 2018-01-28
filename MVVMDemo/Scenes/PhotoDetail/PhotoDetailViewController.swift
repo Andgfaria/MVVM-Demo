@@ -97,7 +97,7 @@ class PhotoDetailViewController: UIViewController, UIScrollViewDelegate {
                     })
                 }
             })
-            .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
     }
     
     private func setupDetailInfoPages() {
@@ -112,18 +112,18 @@ class PhotoDetailViewController: UIViewController, UIScrollViewDelegate {
                                 .subscribe(onNext: {
                                     self.infoButtonVisualEffectView.effect = UIBlurEffect(style: $0 == .normal ? .dark : .extraLight)
                                 })
-                                .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         viewModel?.currentState.asObservable()
                                .skip(1)
                                .subscribe(onNext: {
                                     self.animateContainerViewTransition(with: $0)
                                })
-                               .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
         if let viewModel = viewModel {
             infoButton.rx.tap.asObservable()
                              .map{ viewModel.currentState.value == .normal ? PhotoDetailState.showingMoreInfo : PhotoDetailState.normal }
-                             .bindTo(viewModel.currentState)
-                             .addDisposableTo(disposeBag)
+                .bind(to: viewModel.currentState)
+                .disposed(by: disposeBag)
         }
     }
     
@@ -142,7 +142,7 @@ class PhotoDetailViewController: UIViewController, UIScrollViewDelegate {
         aditionalInfoContainerView.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    func handleDismissInfoTap() {
+    @objc func handleDismissInfoTap() {
         viewModel?.currentState.value = .normal
     }
     

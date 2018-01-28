@@ -62,7 +62,7 @@ class EmptyView: UIView {
                         self.label.isHidden = $0 != .noContent
                         self.button.isHidden = self.label.isHidden
                     })
-                    .addDisposableTo(disposeBag)
+            .disposed(by: disposeBag)
     }
     
     override func layoutSubviews() {
