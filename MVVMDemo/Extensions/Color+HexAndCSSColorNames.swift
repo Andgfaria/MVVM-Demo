@@ -123,15 +123,15 @@ public extension UIColor {
             
         }
         if hexString.count == 3 || hexString.count == 4 {
-            let redHex = hexString.substring(to: hexString.index(hexString.startIndex, offsetBy: 1))
-            let greenHex = hexString.substring(with: Range<String.Index>(hexString.characters.index(hexString.startIndex, offsetBy: 1) ..< hexString.characters.index(hexString.startIndex, offsetBy: 2)))
-            let blueHex = hexString.substring(with: Range<String.Index>(hexString.characters.index(hexString.startIndex, offsetBy: 2) ..< hexString.characters.index(hexString.startIndex, offsetBy: 3)))
+            let redHex = hexString[hexString.startIndex...hexString.index(hexString.startIndex, offsetBy: 1)]
+            let greenHex =  hexString[hexString.index(hexString.startIndex, offsetBy: 1)..<hexString.index(hexString.startIndex, offsetBy: 2)]// hexString.substring(with: Range<String.Index>(hexString.characters.index(hexString.startIndex, offsetBy: 1) ..< hexString.characters.index(hexString.startIndex, offsetBy: 2)))
+            let blueHex = hexString[hexString.index(hexString.startIndex, offsetBy: 2)..<hexString.index(hexString.startIndex, offsetBy: 3)] //hexString.substring(with: Range<String.Index>(hexString.characters.index(hexString.startIndex, offsetBy: 2) ..< hexString.characters.index(hexString.startIndex, offsetBy: 3)))
             var alphaHex = ""
             if hexString.count == 4 {
-                alphaHex = hexString.substring(from: hexString.characters.index(hexString.startIndex, offsetBy: 3))
+                alphaHex = String(hexString[hexString.index(hexString.startIndex, offsetBy: 3)...hexString.endIndex])//hexString.substring(from: hexString.characters.index(hexString.startIndex, offsetBy: 3))
             }
             
-            hexString = redHex + redHex + greenHex + greenHex + blueHex + blueHex + alphaHex + alphaHex
+            hexString = redHex + greenHex + blueHex + alphaHex
         }
         let hasAlpha = hexString.count > 7
         if (!hasAlpha) {
