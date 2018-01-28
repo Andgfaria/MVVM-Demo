@@ -54,7 +54,6 @@ class PhotosListViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(FullSizePhotoTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
-        tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
         setupBinding()
     }
     
